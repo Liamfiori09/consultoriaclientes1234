@@ -321,7 +321,7 @@ textarea.fi{resize:vertical;min-height:72px;}
         </select>
       </div>
       <div class="stats" id="pay-stats"></div>
-      <div class="tw"><table><thead><tr><th>Fecha</th><th>Cliente</th><th>Entidad</th><th>Concepto</th><th>Base</th><th>IVA</th><th>Total</th><th>Estado</th><th>Nota</th></tr></thead><tbody id="pay-table"></tbody></table></div>
+      <div class="tw"><table><thead><tr><th>Fecha inicio</th><th>Cliente</th><th>Entidad</th><th>Tipo</th><th>Concepto</th><th>Base</th><th>IVA</th><th>Total</th><th>Estado</th><th>Nota</th></tr></thead><tbody id="pay-table"></tbody></table></div>
     </div>
 
     <!-- FINANZAS -->
@@ -446,8 +446,24 @@ textarea.fi{resize:vertical;min-height:72px;}
     <div class="fg">
       <div class="fgrp"><label class="flbl">Cliente</label><select class="fi" id="py-client" onchange="updatePaymentPreview()"></select></div>
       <div class="fgrp"><label class="flbl">Importe base (€ sin IVA)</label><input class="fi" id="py-amount" type="number" placeholder="0" oninput="updatePaymentPreview()"></div>
+      <div class="fgrp"><label class="flbl">Tipo de facturación</label>
+        <select class="fi" id="py-tipo" onchange="updatePaymentDuracion()">
+          <option value="recurrente">Recurrente (mensual)</option>
+          <option value="unico">Pago único</option>
+          <option value="consulta">Consultoría por sesión</option>
+        </select>
+      </div>
+      <div class="fgrp" id="py-dur-row"><label class="flbl">Duración (meses)</label>
+        <select class="fi" id="py-duracion">
+          <option value="1">1 mes</option><option value="2">2 meses</option><option value="3">3 meses</option>
+          <option value="6">6 meses</option><option value="12">12 meses</option><option value="0">Indefinido</option>
+        </select>
+      </div>
+      <div class="fgrp" id="py-ses-row" style="display:none"><label class="flbl">Nº sesiones</label>
+        <input class="fi" id="py-sesiones" type="number" placeholder="1" min="1" value="1" oninput="updatePaymentPreview()">
+      </div>
       <div class="fgrp"><label class="flbl">Concepto</label><input class="fi" id="py-concept" placeholder="Retainer Junio"></div>
-      <div class="fgrp"><label class="flbl">Fecha</label><input class="fi" id="py-date" type="date"></div>
+      <div class="fgrp"><label class="flbl">Fecha inicio</label><input class="fi" id="py-date" type="date"></div>
       <div class="fgrp"><label class="flbl">Estado</label>
         <select class="fi" id="py-status"><option>Pagado</option><option>Pendiente</option><option>A la espera</option><option>Atrasado</option></select>
       </div>
@@ -796,19 +812,23 @@ function renderPayments() {
 
   const rows = list.map(p=>{
     const c = S.clients.find(x=>x.id===p.cliente_id);
+    const tipoLabel = p.tipo==='unico'?'Único':p.tipo==='consulta'?`Consulta${p.sesiones>1?' x'+p.sesiones:''}`:p.duracion&&p.duracion>0?`Recurrente · ${p.duracion}m`:'Recurrente';
+    const estadoCycle = {'Pendiente':'A la espera','A la espera':'Pagado','Pagado':'Atrasado','Atrasado':'Pendiente'};
+    const estadoTitle = `Clic para cambiar → ${estadoCycle[p.estado]||'Pendiente'}`;
     return `<tr>
       <td>${fD(p.fecha)}</td>
       <td>${p.cliente_nombre}</td>
       <td>${eBadge(c?.entidad||'autonomo')}</td>
+      <td style="font-size:11px;color:var(--muted2)">${tipoLabel}</td>
       <td>${p.concepto}</td>
       <td>${fE(p.importe)}</td>
       <td>${p.iva?fE(p.iva):'—'}</td>
       <td><b>${fE(p.total||p.importe)}</b></td>
-      <td>${pBadge(p.estado)}</td>
+      <td><span title="${estadoTitle}" style="cursor:pointer" onclick="cyclePaymentStatus('${p.id}','${p.estado}')">${pBadge(p.estado)} <span style="font-size:9px;color:var(--muted)">↻</span></span></td>
       <td style="color:var(--muted);font-size:11px">${p.nota||'—'}</td>
     </tr>`;
   }).join('');
-  document.getElementById('pay-table').innerHTML = rows || '<tr><td colspan="9" class="empty">Sin pagos</td></tr>';
+  document.getElementById('pay-table').innerHTML = rows || '<tr><td colspan="10" class="empty">Sin pagos</td></tr>';
 }
 
 // ── FINANCE P&L ───────────────────────────────────────────────
@@ -1027,20 +1047,53 @@ function openPaymentModal(){
   document.getElementById('py-date').value=tod();
   ['py-amount','py-concept','py-note'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('py-preview').innerHTML='';
+  document.getElementById('py-tipo').value='recurrente';
+  document.getElementById('py-duracion').value='1';
+  document.getElementById('py-sesiones').value='1';
+  document.getElementById('py-dur-row').style.display='flex';
+  document.getElementById('py-ses-row').style.display='none';
   openModal('modal-payment');
 }
+
+function updatePaymentDuracion() {
+  const tipo = document.getElementById('py-tipo').value;
+  document.getElementById('py-dur-row').style.display = tipo==='recurrente'?'flex':'none';
+  document.getElementById('py-ses-row').style.display = tipo==='consulta'?'flex':'none';
+  updatePaymentPreview();
+}
+
+async function cyclePaymentStatus(id, current) {
+  const cycle = {'Pendiente':'A la espera','A la espera':'Pagado','Pagado':'Atrasado','Atrasado':'Pendiente'};
+  const next = cycle[current]||'Pendiente';
+  try {
+    await sb.patch('pagos',id,{estado:next});
+    const p = S.payments.find(x=>x.id===id);
+    if(p) p.estado = next;
+    renderPayments();
+    if(currentView==='dashboard') renderDashboard();
+    if(currentView==='finance') renderFinance();
+  } catch(e){alert('Error: '+e.message);}
+}
+
 
 function updatePaymentPreview(){
   const clientId = document.getElementById('py-client').value;
   const c = S.clients.find(x=>x.id===clientId);
   const base = parseFloat(document.getElementById('py-amount').value)||0;
+  const tipo = document.getElementById('py-tipo')?.value||'recurrente';
+  const dur = parseInt(document.getElementById('py-duracion')?.value)||1;
+  const ses = parseInt(document.getElementById('py-sesiones')?.value)||1;
   const prev = document.getElementById('py-preview');
   if(!base||!c){prev.innerHTML='';return;}
+  const mult = tipo==='consulta'?ses:1;
+  const realBase = base*mult;
   if(c.entidad==='llc'){
-    prev.innerHTML=`<b>${fE(base)}</b> total — Sin IVA (LLC)`;
+    prev.innerHTML=`<b>${fE(realBase)}</b> total sin IVA (LLC)${tipo==='consulta'&&ses>1?` · ${ses} sesiones × ${fE(base)}`:''}`;
   } else {
-    const t = calcTax(base,'autonomo','no');
-    prev.innerHTML=`Base ${fE(base)} + IVA 21% ${fE(t.iva)} = <b>Total factura: ${fE(t.total)}</b> · IRPF -${fE(t.irpf)} · Neto: <b class="cg">${fE(t.neto)}</b>`;
+    const t=calcTax(realBase,'autonomo','no');
+    const extra=tipo==='recurrente'&&dur>1?` · <b>${dur} meses = ${fE(t.total*dur)}</b> total contrato`:'';
+    const sesInfo=tipo==='consulta'&&ses>1?` · ${ses}× ${fE(base)}`:'';
+    prev.innerHTML=`Base ${fE(realBase)}${sesInfo} + IVA ${fE(t.iva)} = <b>Total: ${fE(t.total)}</b> · Neto: <b class="cg">${fE(t.neto)}</b>${extra}`;
   }
 }
 
@@ -1101,10 +1154,26 @@ async function savePayment() {
   if(!importe){alert('Importe requerido');return;}
   const clientId=document.getElementById('py-client').value;
   const c=S.clients.find(x=>x.id===clientId);
-  const t = calcTax(importe, c?.entidad||'autonomo', 'no');
-  const data={cliente_id:clientId,cliente_nombre:c?.nombre||'',concepto:document.getElementById('py-concept').value,importe:t.base,iva:t.iva,total:t.total,fecha:document.getElementById('py-date').value||null,estado:document.getElementById('py-status').value,nota:document.getElementById('py-note').value};
-  try { const r=await sb.post('pagos',data); if(r[0]) S.payments.unshift(r[0]); closeModal('modal-payment'); populatePaymentFilters(); populateFinanceMonths(); renderCurrent(); }
-  catch(e){alert('Error: '+e.message);}
+  const tipo=document.getElementById('py-tipo').value;
+  const dur=parseInt(document.getElementById('py-duracion').value)||1;
+  const ses=parseInt(document.getElementById('py-sesiones').value)||1;
+  const mult=tipo==='consulta'?ses:1;
+  const realBase=importe*mult;
+  const t=calcTax(realBase,c?.entidad||'autonomo','no');
+  const data={
+    cliente_id:clientId,cliente_nombre:c?.nombre||'',
+    concepto:document.getElementById('py-concept').value,
+    importe:t.base,iva:t.iva,total:t.total,
+    fecha:document.getElementById('py-date').value||null,
+    estado:document.getElementById('py-status').value,
+    nota:document.getElementById('py-note').value,
+    tipo,duracion:tipo==='recurrente'?dur:null,sesiones:tipo==='consulta'?ses:null,
+  };
+  try {
+    const r=await sb.post('pagos',data);
+    if(r[0]) S.payments.unshift(r[0]);
+    closeModal('modal-payment'); populatePaymentFilters(); populateFinanceMonths(); renderCurrent();
+  } catch(e){alert('Error: '+e.message);}
 }
 
 async function saveGasto() {
