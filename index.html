@@ -7,63 +7,43 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0b0b0b;
-  --s1: #141414;
-  --s2: #1a1a1a;
-  --s3: #222;
-  --border: #2b2b2b;
-  --border2: #333;
-  --text: #ede9e3;
-  --muted: #666;
-  --muted2: #888;
-  --accent: #c9f135;
-  --accent-dim: rgba(201,241,53,0.08);
-  --orange: #ff6b35;
-  --blue: #4db8ff;
-  --red: #ff4d4d;
-  --green: #4dff91;
-  --yellow: #ffd166;
-  --fh: 'Syne', sans-serif;
-  --fm: 'DM Mono', monospace;
-  --r: 7px;
-  --rl: 12px;
-}
+:root{--bg:#0b0b0b;--s1:#141414;--s2:#1a1a1a;--s3:#222;--border:#2b2b2b;--border2:#333;--text:#ede9e3;--muted:#666;--muted2:#888;--accent:#c9f135;--adim:rgba(201,241,53,0.08);--orange:#ff6b35;--blue:#4db8ff;--red:#ff4d4d;--green:#4dff91;--yellow:#ffd166;--fh:'Syne',sans-serif;--fm:'DM Mono',monospace;--r:7px;--rl:12px;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:var(--fm);font-size:13px;line-height:1.6;min-height:100vh;}
-.app{display:flex;min-height:100vh;}
 
 /* LOGIN */
-.login-screen{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;align-items:center;justify-content:center;flex-direction:column;}
+.login-screen{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;align-items:center;justify-content:center;}
 .login-screen.show{display:flex;}
-.login-box{background:var(--s1);border:1px solid var(--border2);border-radius:var(--rl);padding:40px 36px;width:340px;text-align:center;}
-.login-logo{font-family:var(--fh);font-weight:800;font-size:22px;color:var(--accent);margin-bottom:4px;}
-.login-sub{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
-.login-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:left;display:block;margin-bottom:6px;}
-.login-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;color:var(--text);font-family:var(--fm);font-size:13px;outline:none;transition:border-color .12s;margin-bottom:16px;}
-.login-input:focus{border-color:var(--accent);}
-.login-btn{width:100%;padding:11px;background:var(--accent);color:var(--bg);border:none;border-radius:var(--r);font-family:var(--fh);font-weight:700;font-size:14px;cursor:pointer;transition:opacity .12s;margin-top:4px;}
-.login-btn:hover{opacity:.88;}
-.login-err{font-size:11px;color:var(--red);margin-top:10px;min-height:16px;}
+.lbox{background:var(--s1);border:1px solid var(--border2);border-radius:var(--rl);padding:40px 36px;width:340px;text-align:center;}
+.llogo{font-family:var(--fh);font-weight:800;font-size:22px;color:var(--accent);margin-bottom:4px;}
+.lsub{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
+.llabel{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:left;display:block;margin-bottom:6px;}
+.linput{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;color:var(--text);font-family:var(--fm);font-size:13px;outline:none;transition:border-color .12s;margin-bottom:16px;}
+.linput:focus{border-color:var(--accent);}
+.lbtn{width:100%;padding:11px;background:var(--accent);color:var(--bg);border:none;border-radius:var(--r);font-family:var(--fh);font-weight:700;font-size:14px;cursor:pointer;margin-top:4px;}
+.lbtn:hover{opacity:.88;}
+.lerr{font-size:11px;color:var(--red);margin-top:10px;min-height:16px;}
 
-/* SIDEBAR */
+/* APP */
+.app{display:flex;min-height:100vh;}
 .sidebar{width:210px;min-height:100vh;background:var(--s1);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;}
 .logo{padding:22px 18px 18px;border-bottom:1px solid var(--border);}
-.logo-mark{font-family:var(--fh);font-weight:800;font-size:16px;color:var(--accent);letter-spacing:-0.5px;}
+.logo-mark{font-family:var(--fh);font-weight:800;font-size:16px;color:var(--accent);letter-spacing:-.5px;}
 .logo-sub{font-size:9px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-top:2px;}
 .nav{padding:10px 0;flex:1;}
-.nav-section{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:10px 18px 4px;}
+.nsec{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:10px 18px 4px;}
 .ni{display:flex;align-items:center;gap:9px;padding:8px 18px;cursor:pointer;color:var(--muted2);transition:all .12s;border-left:2px solid transparent;font-size:12px;}
 .ni:hover{color:var(--text);background:var(--s2);}
-.ni.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-dim);}
-.ni-icon{font-size:13px;width:15px;text-align:center;opacity:.7;}
-.sb-foot{padding:14px 18px;border-top:1px solid var(--border);font-size:10px;color:var(--muted);}
+.ni.active{color:var(--accent);border-left-color:var(--accent);background:var(--adim);}
+.ni-ico{font-size:13px;width:15px;text-align:center;opacity:.7;}
+.sbfoot{padding:14px 18px;border-top:1px solid var(--border);font-size:10px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;}
+.logout{cursor:pointer;transition:color .12s;}
+.logout:hover{color:var(--red);}
 
-/* MAIN */
 .main{flex:1;min-width:0;}
 .topbar{padding:16px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--s1);position:sticky;top:0;z-index:20;}
-.page-title{font-family:var(--fh);font-weight:700;font-size:18px;}
-.topbar-r{display:flex;gap:8px;align-items:center;}
+.ptitle{font-family:var(--fh);font-weight:700;font-size:18px;}
+.tbar-r{display:flex;gap:8px;align-items:center;}
 .content{padding:24px 28px;}
 .view{display:none;}
 .view.active{display:block;}
@@ -71,25 +51,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--fm);font-size:13px
 /* BUTTONS */
 .btn{padding:7px 14px;border-radius:var(--r);border:1px solid var(--border2);background:var(--s2);color:var(--text);font-family:var(--fm);font-size:12px;cursor:pointer;transition:all .12s;}
 .btn:hover{background:var(--s3);border-color:var(--muted);}
-.btn-accent{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:500;}
-.btn-accent:hover{opacity:.88;}
+.btn-acc{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:500;}
+.btn-acc:hover{opacity:.88;}
 .btn-sm{padding:5px 10px;font-size:11px;}
-.btn-danger{background:rgba(255,77,77,.1);color:var(--red);border-color:rgba(255,77,77,.2);}
-.btn-danger:hover{background:rgba(255,77,77,.2);}
+.btn-del{background:rgba(255,77,77,.1);color:var(--red);border-color:rgba(255,77,77,.2);}
+.btn-del:hover{background:rgba(255,77,77,.2);}
 
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
 .stat{background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px;}
-.stat-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.stat-val{font-family:var(--fh);font-size:24px;font-weight:700;line-height:1;}
-.stat-sub{font-size:11px;color:var(--muted);margin-top:3px;}
-.c-accent{color:var(--accent);}
-.c-blue{color:var(--blue);}
-.c-orange{color:var(--orange);}
-.c-red{color:var(--red);}
-.c-green{color:var(--green);}
-.c-yellow{color:var(--yellow);}
-.c-muted{color:var(--muted);}
+.slabel{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.sval{font-family:var(--fh);font-size:24px;font-weight:700;line-height:1;}
+.ssub{font-size:11px;color:var(--muted);margin-top:3px;}
+.ca{color:var(--accent);}.cb{color:var(--blue);}.co{color:var(--orange);}.cr{color:var(--red);}.cg{color:var(--green);}.cy{color:var(--yellow);}.cm{color:var(--muted);}
 
 /* SECTION */
 .sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
@@ -108,131 +82,143 @@ tbody tr:hover{background:var(--s2);}
 .csub{font-size:10px;color:var(--muted);margin-top:1px;}
 
 /* BADGES */
-.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:500;letter-spacing:.3px;}
-.b-green{background:rgba(77,255,145,.1);color:var(--green);}
-.b-orange{background:rgba(255,107,53,.1);color:var(--orange);}
-.b-yellow{background:rgba(255,209,102,.1);color:var(--yellow);}
-.b-red{background:rgba(255,77,77,.1);color:var(--red);}
-.b-blue{background:rgba(77,184,255,.1);color:var(--blue);}
-.b-gray{background:rgba(136,136,136,.1);color:var(--muted2);}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:500;}
+.bg{background:rgba(77,255,145,.1);color:var(--green);}
+.bo{background:rgba(255,107,53,.1);color:var(--orange);}
+.by{background:rgba(255,209,102,.1);color:var(--yellow);}
+.br{background:rgba(255,77,77,.1);color:var(--red);}
+.bb{background:rgba(77,184,255,.1);color:var(--blue);}
+.bm{background:rgba(136,136,136,.1);color:var(--muted2);}
+.ba{background:rgba(201,241,53,.1);color:var(--accent);}
 
 /* ALERTS */
 .alert{padding:10px 14px;border-radius:var(--r);border-left:2px solid;margin-bottom:10px;font-size:12px;}
-.alert-red{background:rgba(255,77,77,.05);border-color:var(--red);color:var(--red);}
-.alert-yellow{background:rgba(255,209,102,.05);border-color:var(--yellow);color:var(--yellow);}
+.alert-r{background:rgba(255,77,77,.05);border-color:var(--red);color:var(--red);}
+.alert-y{background:rgba(255,209,102,.05);border-color:var(--yellow);color:var(--yellow);}
 
 /* MODAL */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:100;align-items:center;justify-content:center;}
-.overlay.open{display:flex;}
-.modal{background:var(--s1);border:1px solid var(--border2);border-radius:var(--rl);padding:26px;width:560px;max-width:95vw;max-height:90vh;overflow-y:auto;}
-.modal-lg{width:720px;}
-.mhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border);}
-.mtitle{font-family:var(--fh);font-weight:700;font-size:17px;}
-.mclose{background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px;}
-.mclose:hover{color:var(--text);}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:100;align-items:center;justify-content:center;}
+.ov.open{display:flex;}
+.modal{background:var(--s1);border:1px solid var(--border2);border-radius:var(--rl);padding:26px;width:580px;max-width:95vw;max-height:90vh;overflow-y:auto;}
+.modal-lg{width:740px;}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.mt{font-family:var(--fh);font-weight:700;font-size:17px;}
+.mx{background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px;}
+.mx:hover{color:var(--text);}
 
 /* FORM */
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .ff{grid-column:1/-1;}
-.fgroup{display:flex;flex-direction:column;gap:5px;}
-.flabel{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
-.finput{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:8px 11px;color:var(--text);font-family:var(--fm);font-size:12px;outline:none;transition:border-color .12s;width:100%;}
-.finput:focus{border-color:var(--accent);}
-select.finput{cursor:pointer;}
-textarea.finput{resize:vertical;min-height:72px;}
+.fg2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.fgrp{display:flex;flex-direction:column;gap:5px;}
+.flbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.fi{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:8px 11px;color:var(--text);font-family:var(--fm);font-size:12px;outline:none;transition:border-color .12s;width:100%;}
+.fi:focus{border-color:var(--accent);}
+select.fi{cursor:pointer;}
+textarea.fi{resize:vertical;min-height:72px;}
 .faction{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;padding-top:18px;border-top:1px solid var(--border);}
 
-/* GANTT */
-.gantt-wrap{overflow-x:auto;background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:24px;}
-.gantt-inner{min-width:900px;}
-.gantt-header{display:flex;border-bottom:1px solid var(--border);background:var(--s2);}
-.gantt-label-col{width:180px;flex-shrink:0;padding:10px 14px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-right:1px solid var(--border);}
-.gantt-months{flex:1;display:flex;}
-.gantt-month{flex:1;padding:10px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:center;border-right:1px solid var(--border);}
-.gantt-month:last-child{border-right:none;}
-.gantt-row{display:flex;border-bottom:1px solid var(--border);align-items:center;min-height:46px;}
-.gantt-row:last-child{border-bottom:none;}
-.gantt-row:hover{background:rgba(255,255,255,.02);}
-.gantt-client{width:180px;flex-shrink:0;padding:10px 14px;border-right:1px solid var(--border);}
-.gc-name{font-family:var(--fh);font-weight:600;font-size:12px;}
-.gc-sub{font-size:10px;color:var(--muted);}
-.gantt-track{flex:1;position:relative;height:46px;display:flex;align-items:center;}
-.gantt-bar{position:absolute;height:20px;border-radius:4px;display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:opacity .12s;}
-.gantt-bar:hover{opacity:.8;}
-.gbar-active{background:rgba(201,241,53,.15);border:1px solid rgba(201,241,53,.35);color:var(--accent);}
-.gbar-onboarding{background:rgba(77,184,255,.15);border:1px solid rgba(77,184,255,.35);color:var(--blue);}
-.gbar-paused{background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.2);color:var(--yellow);}
-.gbar-ended{background:rgba(136,136,136,.1);border:1px solid rgba(136,136,136,.2);color:var(--muted2);}
-.gantt-event-dot{position:absolute;width:8px;height:8px;border-radius:50%;top:50%;transform:translateY(-50%);cursor:pointer;z-index:2;}
-.gantt-today{position:absolute;top:0;bottom:0;width:1px;background:var(--accent);opacity:.4;pointer-events:none;}
-.gantt-today-label{position:absolute;top:0;font-size:8px;color:var(--accent);opacity:.6;white-space:nowrap;transform:translateX(-50%);}
+/* INFO BOX */
+.infobox{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;font-size:11px;color:var(--muted2);margin-top:4px;line-height:1.6;}
+.infobox b{color:var(--text);}
 
-/* TASK KANBAN */
+/* GANTT */
+.gw{overflow-x:auto;background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:24px;}
+.gi{min-width:900px;}
+.gh{display:flex;border-bottom:1px solid var(--border);background:var(--s2);}
+.glc{width:180px;flex-shrink:0;padding:10px 14px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-right:1px solid var(--border);}
+.gms{flex:1;display:flex;}
+.gm{flex:1;padding:10px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:center;border-right:1px solid var(--border);}
+.gm:last-child{border-right:none;}
+.grow{display:flex;border-bottom:1px solid var(--border);align-items:center;min-height:46px;}
+.grow:last-child{border-bottom:none;}
+.grow:hover{background:rgba(255,255,255,.02);}
+.gcl{width:180px;flex-shrink:0;padding:10px 14px;border-right:1px solid var(--border);}
+.gcn{font-family:var(--fh);font-weight:600;font-size:12px;}
+.gcs{font-size:10px;color:var(--muted);}
+.gtrack{flex:1;position:relative;height:46px;display:flex;align-items:center;}
+.gbar{position:absolute;height:20px;border-radius:4px;display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:opacity .12s;}
+.gbar:hover{opacity:.8;}
+.gb-a{background:rgba(201,241,53,.15);border:1px solid rgba(201,241,53,.35);color:var(--accent);}
+.gb-o{background:rgba(77,184,255,.15);border:1px solid rgba(77,184,255,.35);color:var(--blue);}
+.gb-p{background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.2);color:var(--yellow);}
+.gb-f{background:rgba(136,136,136,.1);border:1px solid rgba(136,136,136,.2);color:var(--muted2);}
+.gdot{position:absolute;width:8px;height:8px;border-radius:50%;top:50%;transform:translateY(-50%);cursor:pointer;z-index:2;}
+.gtoday{position:absolute;top:0;bottom:0;width:1px;background:var(--accent);opacity:.4;pointer-events:none;}
+
+/* KANBAN */
 .kanban{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:24px;}
-.kboard{background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;}
-.khead{padding:11px 14px;border-bottom:1px solid var(--border);background:var(--s2);display:flex;justify-content:space-between;align-items:center;}
-.khead-title{font-size:11px;font-weight:500;}
-.kcount{font-size:9px;background:var(--s3);padding:1px 6px;border-radius:8px;color:var(--muted);}
+.kb{background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;}
+.kbh{padding:11px 14px;border-bottom:1px solid var(--border);background:var(--s2);display:flex;justify-content:space-between;align-items:center;}
+.kbht{font-size:11px;font-weight:500;}
+.kbc{font-size:9px;background:var(--s3);padding:1px 6px;border-radius:8px;color:var(--muted);}
 .kbody{padding:10px;display:flex;flex-direction:column;gap:7px;}
 .kcard{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:10px 11px;transition:border-color .12s;}
 .kcard:hover{border-color:var(--border2);}
-.kcard-title{font-size:12px;margin-bottom:5px;line-height:1.4;}
-.kcard-meta{font-size:10px;color:var(--muted);}
-.kcard-foot{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;}
-.task-check{display:inline-flex;width:15px;height:15px;border:1.5px solid var(--border2);border-radius:3px;cursor:pointer;align-items:center;justify-content:center;font-size:9px;transition:all .12s;flex-shrink:0;}
-.task-check.done{background:var(--accent);border-color:var(--accent);color:var(--bg);}
+.kct{font-size:12px;margin-bottom:4px;line-height:1.4;}
+.kcm{font-size:10px;color:var(--muted);}
+.kcf{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;align-items:center;}
+.tck{display:inline-flex;width:15px;height:15px;border:1.5px solid var(--border2);border-radius:3px;cursor:pointer;align-items:center;justify-content:center;font-size:9px;transition:all .12s;flex-shrink:0;}
+.tck.done{background:var(--accent);border-color:var(--accent);color:var(--bg);}
 
 /* DETAIL */
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.dcard{background:var(--s2);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px;}
-.dcard-title{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);}
-.drow{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);gap:10px;}
-.drow:last-child{border-bottom:none;}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.dc{background:var(--s2);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px;}
+.dct{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.dr{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);gap:10px;}
+.dr:last-child{border-bottom:none;}
 .dk{color:var(--muted);font-size:11px;min-width:90px;}
 .dv{font-size:12px;text-align:right;}
+
+/* FINANZAS */
+.fin-grid{display:grid;grid-template-columns:1fr 2fr;gap:20px;margin-bottom:24px;}
+.pl-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);padding:20px;}
+.pl-title{font-family:var(--fh);font-weight:600;font-size:14px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.pl-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;font-size:12px;}
+.pl-row.sub{padding-left:14px;color:var(--muted2);font-size:11px;}
+.pl-row.total{border-top:1px solid var(--border);padding-top:10px;margin-top:4px;font-family:var(--fh);font-weight:600;font-size:14px;}
+.pl-row.net{border-top:2px solid var(--accent);padding-top:10px;margin-top:4px;font-family:var(--fh);font-weight:700;font-size:18px;color:var(--accent);}
+.pl-sep{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.gastos-list{display:flex;flex-direction:column;gap:8px;}
+.gasto-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--s2);border:1px solid var(--border);border-radius:var(--r);}
+.gasto-name{font-size:12px;}
+.gasto-amount{font-family:var(--fh);font-weight:600;font-size:13px;}
+.gasto-fixed{font-size:10px;color:var(--muted);margin-top:1px;}
+
+/* FILTER BAR */
+.filters{display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap;}
+.fi-sm{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:6px 10px;color:var(--text);font-family:var(--fm);font-size:12px;outline:none;}
+.fi-sm:focus{border-color:var(--accent);}
 
 /* SEARCH */
 .search{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:7px 12px;color:var(--text);font-family:var(--fm);font-size:12px;outline:none;width:200px;transition:border-color .12s;}
 .search:focus{border-color:var(--accent);}
 .search::placeholder{color:var(--muted);}
 
-/* LOADING / EMPTY */
-.loading{text-align:center;padding:40px;color:var(--muted);font-size:12px;}
-.loading-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1s infinite;}
-@keyframes pulse{0%,100%{opacity:.2;}50%{opacity:1;}}
 .empty{text-align:center;padding:36px;color:var(--muted);font-size:12px;}
-
-/* SCROLLBAR */
+.pw{background:var(--s3);border-radius:3px;height:3px;width:70px;}
+.pb{height:3px;border-radius:3px;background:var(--accent);}
 ::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
-
-/* PROGRESS */
-.pw{background:var(--s3);border-radius:3px;height:3px;width:70px;}
-.pb{height:3px;border-radius:3px;background:var(--accent);}
-
-@media(max-width:900px){
-  .stats{grid-template-columns:1fr 1fr;}
-  .detail-grid{grid-template-columns:1fr;}
-  .fg{grid-template-columns:1fr;}
-}
+@media(max-width:900px){.stats{grid-template-columns:1fr 1fr;}.dgrid{grid-template-columns:1fr;}.fg{grid-template-columns:1fr;}.fin-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
 <!-- LOGIN -->
 <div class="login-screen show" id="login-screen">
-  <div class="login-box">
-    <div class="login-logo">JESDIGITAL</div>
-    <div class="login-sub">Agency CRM</div>
-    <label class="login-label">Contraseña</label>
-    <input class="login-input" type="password" id="login-pwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="login-btn" onclick="doLogin()">Entrar</button>
-    <div class="login-err" id="login-err"></div>
+  <div class="lbox">
+    <div class="llogo">JESDIGITAL</div>
+    <div class="lsub">Agency CRM</div>
+    <label class="llabel">Contraseña</label>
+    <input class="linput" type="password" id="lpwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="lbtn" onclick="doLogin()">Entrar</button>
+    <div class="lerr" id="lerr"></div>
   </div>
 </div>
 
-<div id="main-app" style="display:none;flex:1;min-height:100vh;flex-direction:row;" class="app">
+<div id="main-app" style="display:none;flex:1;" class="app">
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
@@ -241,26 +227,27 @@ textarea.finput{resize:vertical;min-height:72px;}
     <div class="logo-sub">Agency CRM</div>
   </div>
   <nav class="nav">
-    <div class="nav-section">Menú</div>
-    <div class="ni active" onclick="showView('dashboard')"><span class="ni-icon">⬡</span>Dashboard</div>
-    <div class="ni" onclick="showView('clients')"><span class="ni-icon">◎</span>Clientes</div>
-    <div class="ni" onclick="showView('timeline')"><span class="ni-icon">◈</span>Timeline</div>
-    <div class="ni" onclick="showView('tasks')"><span class="ni-icon">◻</span>Tareas</div>
-    <div class="ni" onclick="showView('payments')"><span class="ni-icon">◇</span>Pagos</div>
+    <div class="nsec">Menú</div>
+    <div class="ni active" onclick="showView('dashboard')"><span class="ni-ico">⬡</span>Dashboard</div>
+    <div class="ni" onclick="showView('clients')"><span class="ni-ico">◎</span>Clientes</div>
+    <div class="ni" onclick="showView('timeline')"><span class="ni-ico">◈</span>Timeline</div>
+    <div class="ni" onclick="showView('tasks')"><span class="ni-ico">◻</span>Tareas</div>
+    <div class="ni" onclick="showView('payments')"><span class="ni-ico">◇</span>Pagos</div>
+    <div class="ni" onclick="showView('finance')"><span class="ni-ico">◑</span>Finanzas</div>
   </nav>
-  <div class="sb-foot" style="display:flex;justify-content:space-between;align-items:center;">
+  <div class="sbfoot">
     <span>Supabase ✓</span>
-    <span onclick="doLogout()" style="cursor:pointer;color:var(--muted);font-size:10px;transition:color .12s" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--muted)'">Salir</span>
+    <span class="logout" onclick="doLogout()">Salir</span>
   </div>
 </aside>
 
 <!-- MAIN -->
 <main class="main">
   <div class="topbar">
-    <div class="page-title" id="page-title">Dashboard</div>
-    <div class="topbar-r">
+    <div class="ptitle" id="page-title">Dashboard</div>
+    <div class="tbar-r">
       <input class="search" type="text" placeholder="Buscar..." id="search-input" oninput="handleSearch()">
-      <button class="btn btn-accent" id="btn-primary" onclick="primaryAction()">+ Nuevo cliente</button>
+      <button class="btn btn-acc" id="btn-primary" onclick="primaryAction()">+ Nuevo cliente</button>
     </div>
   </div>
   <div class="content">
@@ -279,15 +266,15 @@ textarea.finput{resize:vertical;min-height:72px;}
         </div>
       </div>
       <div class="sh"><div class="st">Clientes activos</div><button class="btn btn-sm" onclick="showView('clients')">Ver todos →</button></div>
-      <div class="tw"><table><thead><tr><th>Cliente</th><th>Servicio</th><th>Estado</th><th>Retainer</th><th>Próx. evento</th><th>Tareas</th></tr></thead><tbody id="dash-table"></tbody></table></div>
+      <div class="tw"><table><thead><tr><th>Cliente</th><th>Entidad</th><th>Servicio</th><th>Estado</th><th>Base/mes</th><th>Próx. evento</th></tr></thead><tbody id="dash-table"></tbody></table></div>
     </div>
 
     <!-- CLIENTS -->
     <div class="view" id="view-clients">
-      <div class="tw"><table><thead><tr><th>Cliente</th><th>Servicio</th><th>Responsable</th><th>Estado</th><th>Retainer</th><th>Total cobrado</th><th></th></tr></thead><tbody id="clients-table"></tbody></table></div>
+      <div class="tw"><table><thead><tr><th>Cliente</th><th>Entidad</th><th>Servicio</th><th>Responsable</th><th>Estado</th><th>Base/mes</th><th>Total cobrado</th><th></th></tr></thead><tbody id="clients-table"></tbody></table></div>
     </div>
 
-    <!-- TIMELINE / GANTT -->
+    <!-- TIMELINE -->
     <div class="view" id="view-timeline">
       <div class="sh" style="margin-bottom:16px">
         <div class="st">Timeline de clientes</div>
@@ -295,14 +282,13 @@ textarea.finput{resize:vertical;min-height:72px;}
           <button class="btn btn-sm" onclick="ganttPrev()">← Anterior</button>
           <span id="gantt-range" style="font-size:11px;color:var(--muted);min-width:120px;text-align:center"></span>
           <button class="btn btn-sm" onclick="ganttNext()">Siguiente →</button>
-          <button class="btn btn-sm btn-accent" onclick="openEventModal()">+ Evento</button>
+          <button class="btn btn-sm btn-acc" onclick="openEventModal()">+ Evento</button>
         </div>
       </div>
-      <div class="gantt-wrap" id="gantt-wrap"></div>
-      <div style="display:flex;gap:16px;font-size:11px;color:var(--muted);margin-top:8px">
+      <div class="gw" id="gantt-wrap"></div>
+      <div style="display:flex;gap:16px;font-size:11px;color:var(--muted);margin-top:8px;flex-wrap:wrap">
         <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(201,241,53,.2);border:1px solid rgba(201,241,53,.4);display:inline-block"></span>Activo</span>
         <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(77,184,255,.2);border:1px solid rgba(77,184,255,.4);display:inline-block"></span>Onboarding</span>
-        <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.25);display:inline-block"></span>Pausado</span>
         <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block"></span>Consultoría</span>
         <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block"></span>Entregable</span>
         <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block"></span>Reunión</span>
@@ -312,14 +298,48 @@ textarea.finput{resize:vertical;min-height:72px;}
 
     <!-- TASKS -->
     <div class="view" id="view-tasks">
-      <div class="sh" style="margin-bottom:16px"><div class="st">Tareas delegadas</div><button class="btn btn-accent" onclick="openTaskModal()">+ Nueva tarea</button></div>
+      <div class="sh" style="margin-bottom:16px"><div class="st">Tareas delegadas</div><button class="btn btn-acc" onclick="openTaskModal()">+ Nueva tarea</button></div>
       <div class="kanban" id="kanban"></div>
     </div>
 
     <!-- PAYMENTS -->
     <div class="view" id="view-payments">
-      <div class="stats" id="pay-stats" style="margin-bottom:24px"></div>
-      <div class="tw"><table><thead><tr><th>Fecha</th><th>Cliente</th><th>Concepto</th><th>Importe</th><th>Estado</th><th>Nota</th></tr></thead><tbody id="pay-table"></tbody></table></div>
+      <div class="sh" style="margin-bottom:14px"><div class="st">Control de pagos</div><button class="btn btn-acc" onclick="openPaymentModal()">+ Registrar pago</button></div>
+      <div class="filters">
+        <select class="fi-sm" id="pay-filter-month" onchange="renderPayments()">
+          <option value="">Todos los meses</option>
+        </select>
+        <select class="fi-sm" id="pay-filter-status" onchange="renderPayments()">
+          <option value="">Todos los estados</option>
+          <option>Pagado</option>
+          <option>Pendiente</option>
+          <option>A la espera</option>
+          <option>Atrasado</option>
+        </select>
+        <select class="fi-sm" id="pay-filter-client" onchange="renderPayments()">
+          <option value="">Todos los clientes</option>
+        </select>
+      </div>
+      <div class="stats" id="pay-stats"></div>
+      <div class="tw"><table><thead><tr><th>Fecha</th><th>Cliente</th><th>Entidad</th><th>Concepto</th><th>Base</th><th>IVA</th><th>Total</th><th>Estado</th><th>Nota</th></tr></thead><tbody id="pay-table"></tbody></table></div>
+    </div>
+
+    <!-- FINANZAS -->
+    <div class="view" id="view-finance">
+      <div class="sh" style="margin-bottom:16px">
+        <div class="st">P&L Mensual</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <select class="fi-sm" id="fin-month" onchange="renderFinance()"></select>
+          <button class="btn btn-sm btn-acc" onclick="openGastoModal()">+ Gasto</button>
+        </div>
+      </div>
+      <div class="fin-grid">
+        <div class="pl-box" id="pl-box"></div>
+        <div>
+          <div class="sh"><div class="st">Gastos del mes</div></div>
+          <div id="gastos-list"></div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -327,759 +347,831 @@ textarea.finput{resize:vertical;min-height:72px;}
 </div>
 
 <!-- CLIENT MODAL -->
-<div class="overlay" id="modal-client">
+<div class="ov" id="modal-client">
   <div class="modal">
-    <div class="mhead"><div class="mtitle" id="client-modal-title">Nuevo cliente</div><button class="mclose" onclick="closeModal('modal-client')">✕</button></div>
+    <div class="mh"><div class="mt" id="client-mtitle">Nuevo cliente</div><button class="mx" onclick="closeModal('modal-client')">✕</button></div>
     <div class="fg">
-      <div class="fgroup"><label class="flabel">Nombre empresa</label><input class="finput" id="f-name" placeholder="DietBox España"></div>
-      <div class="fgroup"><label class="flabel">Responsable</label><input class="finput" id="f-owner" placeholder="Liam"></div>
-      <div class="fgroup"><label class="flabel">Servicio</label><select class="finput" id="f-service"><option>Gestión Meta Ads</option><option>Consultoría</option><option>Lead Generation</option><option>Email Marketing</option><option>Full Service</option><option>SEO / Contenido</option><option>Otro</option></select></div>
-      <div class="fgroup"><label class="flabel">Estado</label><select class="finput" id="f-status"><option>Activo</option><option>Onboarding</option><option>Pausado</option><option>Finalizado</option></select></div>
-      <div class="fgroup"><label class="flabel">Retainer mensual (€)</label><input class="finput" id="f-retainer" type="number" placeholder="0"></div>
-      <div class="fgroup"><label class="flabel">Día facturación</label><input class="finput" id="f-billing" type="number" placeholder="1" min="1" max="31"></div>
-      <div class="fgroup"><label class="flabel">Fecha inicio</label><input class="finput" id="f-start" type="date"></div>
-      <div class="fgroup"><label class="flabel">Contacto</label><input class="finput" id="f-contact" placeholder="email@empresa.com"></div>
-      <div class="fgroup ff"><label class="flabel">Notas</label><textarea class="finput" id="f-notes" placeholder="Contexto, objetivos..."></textarea></div>
+      <div class="fgrp"><label class="flbl">Nombre empresa</label><input class="fi" id="f-name" placeholder="DietBox España"></div>
+      <div class="fgrp"><label class="flbl">Responsable</label><input class="fi" id="f-owner" placeholder="Liam"></div>
+      <div class="fgrp"><label class="flbl">Entidad facturación</label>
+        <select class="fi" id="f-entity" onchange="updateEntityUI()">
+          <option value="autonomo">Autónomo España</option>
+          <option value="llc">LLC / Internacional</option>
+        </select>
+      </div>
+      <div class="fgrp"><label class="flbl">Servicio</label>
+        <select class="fi" id="f-service">
+          <option>Gestión Meta Ads</option><option>Consultoría</option><option>Lead Generation</option>
+          <option>Email Marketing</option><option>Full Service</option><option>SEO / Contenido</option><option>Otro</option>
+        </select>
+      </div>
+      <div class="fgrp"><label class="flbl">Retainer base (€ sin IVA)</label><input class="fi" id="f-retainer" type="number" placeholder="0" oninput="updateEntityUI()"></div>
+      <div class="fgrp" id="f-iva-row">
+        <label class="flbl">¿El precio ya incluye IVA?</label>
+        <select class="fi" id="f-iva-included" onchange="updateEntityUI()">
+          <option value="no">No — el IVA se añade encima</option>
+          <option value="si">Sí — precio ya lleva IVA incluido</option>
+        </select>
+      </div>
+      <div class="fgrp"><label class="flbl">Estado</label>
+        <select class="fi" id="f-status">
+          <option>Activo</option><option>Onboarding</option><option>Pausado</option><option>Finalizado</option>
+        </select>
+      </div>
+      <div class="fgrp"><label class="flbl">Día facturación</label><input class="fi" id="f-billing" type="number" placeholder="1" min="1" max="31"></div>
+      <div class="fgrp"><label class="flbl">Fecha inicio</label><input class="fi" id="f-start" type="date"></div>
+      <div class="fgrp"><label class="flbl">Contacto</label><input class="fi" id="f-contact" placeholder="email@empresa.com"></div>
+      <div class="fgrp ff"><label class="flbl">Notas</label><textarea class="fi" id="f-notes" placeholder="Contexto, objetivos..."></textarea></div>
     </div>
+    <div id="f-preview" class="infobox" style="margin-top:14px"></div>
     <div class="faction">
       <button class="btn" onclick="closeModal('modal-client')">Cancelar</button>
-      <button class="btn btn-accent" onclick="saveClient()">Guardar</button>
+      <button class="btn btn-acc" onclick="saveClient()">Guardar</button>
     </div>
   </div>
 </div>
 
 <!-- EVENT MODAL -->
-<div class="overlay" id="modal-event">
+<div class="ov" id="modal-event">
   <div class="modal">
-    <div class="mhead"><div class="mtitle">Nuevo evento</div><button class="mclose" onclick="closeModal('modal-event')">✕</button></div>
+    <div class="mh"><div class="mt">Nuevo evento</div><button class="mx" onclick="closeModal('modal-event')">✕</button></div>
     <div class="fg">
-      <div class="fgroup"><label class="flabel">Título</label><input class="finput" id="ev-title" placeholder="Consultoría mensual"></div>
-      <div class="fgroup"><label class="flabel">Cliente</label><select class="finput" id="ev-client"></select></div>
-      <div class="fgroup"><label class="flabel">Tipo</label><select class="finput" id="ev-type"><option>Consultoría</option><option>Entregable</option><option>Reunión</option><option>Revisión</option><option>Facturación</option><option>Inicio campaña</option><option>Otro</option></select></div>
-      <div class="fgroup"><label class="flabel">Fecha</label><input class="finput" id="ev-date" type="date"></div>
-      <div class="fgroup ff"><label class="flabel">Descripción</label><textarea class="finput" id="ev-desc" placeholder="Detalle del evento..."></textarea></div>
+      <div class="fgrp"><label class="flbl">Título</label><input class="fi" id="ev-title" placeholder="Consultoría mensual"></div>
+      <div class="fgrp"><label class="flbl">Cliente</label><select class="fi" id="ev-client"></select></div>
+      <div class="fgrp"><label class="flbl">Tipo</label>
+        <select class="fi" id="ev-type">
+          <option>Consultoría</option><option>Entregable</option><option>Reunión</option>
+          <option>Revisión</option><option>Facturación</option><option>Inicio campaña</option><option>Otro</option>
+        </select>
+      </div>
+      <div class="fgrp"><label class="flbl">Fecha</label><input class="fi" id="ev-date" type="date"></div>
+      <div class="fgrp ff"><label class="flbl">Descripción</label><textarea class="fi" id="ev-desc" placeholder="Detalle..."></textarea></div>
     </div>
     <div class="faction">
       <button class="btn" onclick="closeModal('modal-event')">Cancelar</button>
-      <button class="btn btn-accent" onclick="saveEvent()">Guardar</button>
+      <button class="btn btn-acc" onclick="saveEvent()">Guardar</button>
     </div>
   </div>
 </div>
 
 <!-- TASK MODAL -->
-<div class="overlay" id="modal-task">
+<div class="ov" id="modal-task">
   <div class="modal">
-    <div class="mhead"><div class="mtitle">Nueva tarea</div><button class="mclose" onclick="closeModal('modal-task')">✕</button></div>
+    <div class="mh"><div class="mt">Nueva tarea delegada</div><button class="mx" onclick="closeModal('modal-task')">✕</button></div>
     <div class="fg">
-      <div class="fgroup ff"><label class="flabel">Descripción</label><input class="finput" id="tk-title" placeholder="Crear creatividades para campaña..."></div>
-      <div class="fgroup"><label class="flabel">Asignado a</label><input class="finput" id="tk-person" placeholder="Liam, Moha, Freelance..."></div>
-      <div class="fgroup"><label class="flabel">Cliente</label><select class="finput" id="tk-client"></select></div>
-      <div class="fgroup"><label class="flabel">Fecha límite</label><input class="finput" id="tk-due" type="date"></div>
-      <div class="fgroup"><label class="flabel">Prioridad</label><select class="finput" id="tk-priority"><option>Normal</option><option>Alta</option><option>Urgente</option><option>Baja</option></select></div>
-      <div class="fgroup"><label class="flabel">Estado</label><select class="finput" id="tk-status"><option>Pendiente</option><option>En progreso</option><option>Completado</option><option>Bloqueado</option></select></div>
+      <div class="fgrp ff"><label class="flbl">Descripción</label><input class="fi" id="tk-title" placeholder="Crear creatividades para campaña..."></div>
+      <div class="fgrp"><label class="flbl">Asignado a</label><input class="fi" id="tk-person" placeholder="Moha, Freelance..."></div>
+      <div class="fgrp"><label class="flbl">Cliente</label><select class="fi" id="tk-client"></select></div>
+      <div class="fgrp"><label class="flbl">Fecha límite</label><input class="fi" id="tk-due" type="date"></div>
+      <div class="fgrp"><label class="flbl">Prioridad</label>
+        <select class="fi" id="tk-priority"><option>Normal</option><option>Alta</option><option>Urgente</option><option>Baja</option></select>
+      </div>
+      <div class="fgrp"><label class="flbl">Estado</label>
+        <select class="fi" id="tk-status"><option>Pendiente</option><option>En progreso</option><option>Completado</option><option>Bloqueado</option></select>
+      </div>
+      <div class="fgrp"><label class="flbl">Coste delegación (€)</label><input class="fi" id="tk-cost" type="number" placeholder="0"></div>
+      <div class="fgrp"><label class="flbl">Nota coste</label><input class="fi" id="tk-cost-note" placeholder="Ej: Diseñador Fiverr"></div>
     </div>
     <div class="faction">
       <button class="btn" onclick="closeModal('modal-task')">Cancelar</button>
-      <button class="btn btn-accent" onclick="saveTask()">Guardar</button>
+      <button class="btn btn-acc" onclick="saveTask()">Guardar</button>
     </div>
   </div>
 </div>
 
 <!-- PAYMENT MODAL -->
-<div class="overlay" id="modal-payment">
+<div class="ov" id="modal-payment">
   <div class="modal">
-    <div class="mhead"><div class="mtitle">Registrar pago</div><button class="mclose" onclick="closeModal('modal-payment')">✕</button></div>
+    <div class="mh"><div class="mt">Registrar pago</div><button class="mx" onclick="closeModal('modal-payment')">✕</button></div>
     <div class="fg">
-      <div class="fgroup"><label class="flabel">Cliente</label><select class="finput" id="py-client"></select></div>
-      <div class="fgroup"><label class="flabel">Importe (€)</label><input class="finput" id="py-amount" type="number" placeholder="0"></div>
-      <div class="fgroup"><label class="flabel">Concepto</label><input class="finput" id="py-concept" placeholder="Retainer Junio"></div>
-      <div class="fgroup"><label class="flabel">Fecha</label><input class="finput" id="py-date" type="date"></div>
-      <div class="fgroup"><label class="flabel">Estado</label><select class="finput" id="py-status"><option>Pagado</option><option>Pendiente</option><option>Atrasado</option></select></div>
-      <div class="fgroup"><label class="flabel">Nota</label><input class="finput" id="py-note" placeholder="Opcional"></div>
+      <div class="fgrp"><label class="flbl">Cliente</label><select class="fi" id="py-client" onchange="updatePaymentPreview()"></select></div>
+      <div class="fgrp"><label class="flbl">Importe base (€ sin IVA)</label><input class="fi" id="py-amount" type="number" placeholder="0" oninput="updatePaymentPreview()"></div>
+      <div class="fgrp"><label class="flbl">Concepto</label><input class="fi" id="py-concept" placeholder="Retainer Junio"></div>
+      <div class="fgrp"><label class="flbl">Fecha</label><input class="fi" id="py-date" type="date"></div>
+      <div class="fgrp"><label class="flbl">Estado</label>
+        <select class="fi" id="py-status"><option>Pagado</option><option>Pendiente</option><option>A la espera</option><option>Atrasado</option></select>
+      </div>
+      <div class="fgrp"><label class="flbl">Nota</label><input class="fi" id="py-note" placeholder="Opcional"></div>
     </div>
+    <div id="py-preview" class="infobox" style="margin-top:14px"></div>
     <div class="faction">
       <button class="btn" onclick="closeModal('modal-payment')">Cancelar</button>
-      <button class="btn btn-accent" onclick="savePayment()">Guardar</button>
+      <button class="btn btn-acc" onclick="savePayment()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- GASTO MODAL -->
+<div class="ov" id="modal-gasto">
+  <div class="modal" style="width:420px">
+    <div class="mh"><div class="mt">Nuevo gasto</div><button class="mx" onclick="closeModal('modal-gasto')">✕</button></div>
+    <div class="fg">
+      <div class="fgrp"><label class="flbl">Descripción</label><input class="fi" id="gs-name" placeholder="Ej: Subscripción herramienta"></div>
+      <div class="fgrp"><label class="flbl">Importe (€)</label><input class="fi" id="gs-amount" type="number" placeholder="0"></div>
+      <div class="fgrp"><label class="flbl">Mes (YYYY-MM)</label><input class="fi" id="gs-month" placeholder="2025-06"></div>
+      <div class="fgrp"><label class="flbl">Tipo</label>
+        <select class="fi" id="gs-type"><option value="variable">Variable (este mes)</option><option value="fijo">Fijo (todos los meses)</option></select>
+      </div>
+    </div>
+    <div class="faction">
+      <button class="btn" onclick="closeModal('modal-gasto')">Cancelar</button>
+      <button class="btn btn-acc" onclick="saveGasto()">Guardar</button>
     </div>
   </div>
 </div>
 
 <!-- CLIENT DETAIL MODAL -->
-<div class="overlay" id="modal-detail">
+<div class="ov" id="modal-detail">
   <div class="modal modal-lg">
-    <div class="mhead"><div class="mtitle" id="detail-name">Cliente</div><button class="mclose" onclick="closeModal('modal-detail')">✕</button></div>
+    <div class="mh"><div class="mt" id="detail-name">Cliente</div><button class="mx" onclick="closeModal('modal-detail')">✕</button></div>
     <div id="detail-body"></div>
   </div>
 </div>
 
 <script>
-// ─── SUPABASE CONFIG ───────────────────────────────────────────
+// ── SUPABASE ──────────────────────────────────────────────────
 const SB_URL = 'https://bycgpyzgnzemuhkmbftw.supabase.co';
 const SB_KEY = 'sb_publishable_RZ9fL_A0fvUciyMbBLiTsQ_LgOl2mBX';
 
 const sb = {
-  async get(table, params = '') {
+  async get(table, params='') {
     const r = await fetch(`${SB_URL}/rest/v1/${table}?${params}&order=created_at.desc`, {
-      headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}`, 'Content-Type': 'application/json' }
+      headers:{apikey:SB_KEY,Authorization:`Bearer ${SB_KEY}`,'Content-Type':'application/json'}
     });
-    if (!r.ok) throw new Error(await r.text());
+    if(!r.ok) throw new Error(await r.text());
     return r.json();
   },
-  async post(table, body) {
-    const r = await fetch(`${SB_URL}/rest/v1/${table}`, {
-      method: 'POST',
-      headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}`, 'Content-Type': 'application/json', Prefer: 'return=representation' },
-      body: JSON.stringify(body)
+  async post(table,body) {
+    const r = await fetch(`${SB_URL}/rest/v1/${table}`,{
+      method:'POST',
+      headers:{apikey:SB_KEY,Authorization:`Bearer ${SB_KEY}`,'Content-Type':'application/json',Prefer:'return=representation'},
+      body:JSON.stringify(body)
     });
-    if (!r.ok) throw new Error(await r.text());
+    if(!r.ok) throw new Error(await r.text());
     return r.json();
   },
-  async patch(table, id, body) {
-    const r = await fetch(`${SB_URL}/rest/v1/${table}?id=eq.${id}`, {
-      method: 'PATCH',
-      headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}`, 'Content-Type': 'application/json', Prefer: 'return=representation' },
-      body: JSON.stringify(body)
+  async patch(table,id,body) {
+    const r = await fetch(`${SB_URL}/rest/v1/${table}?id=eq.${id}`,{
+      method:'PATCH',
+      headers:{apikey:SB_KEY,Authorization:`Bearer ${SB_KEY}`,'Content-Type':'application/json',Prefer:'return=representation'},
+      body:JSON.stringify(body)
     });
-    if (!r.ok) throw new Error(await r.text());
+    if(!r.ok) throw new Error(await r.text());
     return r.json();
   },
-  async delete(table, id) {
-    const r = await fetch(`${SB_URL}/rest/v1/${table}?id=eq.${id}`, {
-      method: 'DELETE',
-      headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` }
+  async del(table,id) {
+    const r = await fetch(`${SB_URL}/rest/v1/${table}?id=eq.${id}`,{
+      method:'DELETE',
+      headers:{apikey:SB_KEY,Authorization:`Bearer ${SB_KEY}`}
     });
-    if (!r.ok) throw new Error(await r.text());
+    if(!r.ok) throw new Error(await r.text());
   }
 };
 
-// ─── STATE ────────────────────────────────────────────────────
-let state = { clients: [], events: [], tasks: [], payments: [] };
+// ── STATE ─────────────────────────────────────────────────────
+let S = {clients:[],events:[],tasks:[],payments:[],gastos:[]};
 let editingClientId = null;
-let ganttOffset = 0; // months offset from today
+let ganttOffset = 0;
 
-// ─── HELPERS ─────────────────────────────────────────────────
-const fmtEur = n => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(n || 0);
-const fmtDate = s => s ? new Date(s + 'T00:00:00').toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
-const today = () => new Date().toISOString().split('T')[0];
-const isOverdue = s => s && new Date(s + 'T00:00:00') < new Date();
+// Gastos fijos base (persisten en localStorage)
+const GASTOS_FIJOS_BASE = [
+  {id:'gf1',name:'Cuota autónomo',amount:268,tipo:'fijo'},
+  {id:'gf2',name:'Gestoría',amount:30,tipo:'fijo'},
+];
 
-function statusBadge(s) {
-  const m = { 'Activo': 'b-green', 'Onboarding': 'b-blue', 'Pausado': 'b-yellow', 'Finalizado': 'b-gray' };
-  return `<span class="badge ${m[s]||'b-gray'}">${s}</span>`;
-}
-function payBadge(s) {
-  const m = { 'Pagado': 'b-green', 'Pendiente': 'b-yellow', 'Atrasado': 'b-red' };
-  return `<span class="badge ${m[s]||'b-gray'}">${s}</span>`;
-}
-function priBadge(p) {
-  const m = { 'Urgente': 'b-red', 'Alta': 'b-orange', 'Normal': 'b-blue', 'Baja': 'b-gray' };
-  return `<span class="badge ${m[p]||'b-gray'}">${p}</span>`;
-}
-function taskBadge(s) {
-  const m = { 'Completado': 'b-green', 'En progreso': 'b-blue', 'Pendiente': 'b-yellow', 'Bloqueado': 'b-red' };
-  return `<span class="badge ${m[s]||'b-gray'}">${s}</span>`;
-}
-function eventDotColor(type) {
-  const m = { 'Consultoría': 'var(--blue)', 'Entregable': 'var(--green)', 'Reunión': 'var(--orange)', 'Revisión': 'var(--yellow)', 'Facturación': 'var(--muted2)', 'Inicio campaña': 'var(--accent)', 'Otro': 'var(--muted2)' };
-  return m[type] || 'var(--muted2)';
+function getGastosFijos() {
+  try { return JSON.parse(localStorage.getItem('jd_gastos_fijos')) || GASTOS_FIJOS_BASE; }
+  catch { return GASTOS_FIJOS_BASE; }
 }
 
-function setLoading(id, msg = '') {
-  const el = document.getElementById(id);
-  if (el) el.innerHTML = `<div class="loading"><span class="loading-dot"></span>${msg ? ' ' + msg : ''}</div>`;
+// ── TAX HELPERS ───────────────────────────────────────────────
+const IVA = 0.21;
+const IRPF = 0.15;
+
+function calcTax(base, entity, ivaIncluded) {
+  // base: what user entered
+  // returns {base, iva, irpf, total, neto}
+  let realBase = parseFloat(base) || 0;
+  if (entity === 'autonomo' && ivaIncluded === 'si') {
+    realBase = realBase / (1 + IVA);
+  }
+  const iva    = entity === 'autonomo' ? realBase * IVA : 0;
+  const irpf   = entity === 'autonomo' ? realBase * IRPF : 0;
+  const total  = realBase + iva;
+  const neto   = realBase - irpf;
+  return { base: realBase, iva, irpf, total, neto };
 }
 
-// ─── LOAD ALL DATA ────────────────────────────────────────────
+// ── HELPERS ───────────────────────────────────────────────────
+const fE = n => new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:0}).format(n||0);
+const fD = s => s ? new Date(s+'T00:00:00').toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'}) : '—';
+const tod = () => new Date().toISOString().split('T')[0];
+const isOD = s => s && new Date(s+'T00:00:00') < new Date();
+const monthKey = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+const monthLabel = k => { const [y,m]=k.split('-'); return new Date(y,m-1,1).toLocaleDateString('es-ES',{month:'long',year:'numeric'}); };
+
+function sBadge(s){const m={'Activo':'bg','Onboarding':'bb','Pausado':'by','Finalizado':'bm'};return `<span class="badge ${m[s]||'bm'}">${s}</span>`;}
+function pBadge(s){const m={'Pagado':'bg','Pendiente':'by','A la espera':'bb','Atrasado':'br'};return `<span class="badge ${m[s]||'bm'}">${s}</span>`;}
+function priBadge(p){const m={'Urgente':'br','Alta':'bo','Normal':'bb','Baja':'bm'};return `<span class="badge ${m[p]||'bm'}">${p}</span>`;}
+function tBadge(s){const m={'Completado':'bg','En progreso':'bb','Pendiente':'by','Bloqueado':'br'};return `<span class="badge ${m[s]||'bm'}">${s}</span>`;}
+function eBadge(e){return e==='llc'?`<span class="badge bm">LLC</span>`:`<span class="badge ba">ES</span>`;}
+function dotColor(t){const m={'Consultoría':'var(--blue)','Entregable':'var(--green)','Reunión':'var(--orange)','Revisión':'var(--yellow)','Facturación':'var(--muted2)','Inicio campaña':'var(--accent)','Otro':'var(--muted2)'};return m[t]||'var(--muted2)';}
+
+// ── LOAD ──────────────────────────────────────────────────────
 async function loadAll() {
   try {
-    const [clients, events, tasks, payments] = await Promise.all([
-      sb.get('clientes', 'select=*'),
-      sb.get('eventos', 'select=*'),
-      sb.get('tareas', 'select=*'),
-      sb.get('pagos', 'select=*')
+    const [clients,events,tasks,payments] = await Promise.all([
+      sb.get('clientes','select=*'),
+      sb.get('eventos','select=*'),
+      sb.get('tareas','select=*'),
+      sb.get('pagos','select=*'),
     ]);
-    state.clients = clients;
-    state.events = events;
-    state.tasks = tasks;
-    state.payments = payments;
+    // gastos variables stored in supabase if table exists, else localStorage
+    let gastos = [];
+    try { gastos = await sb.get('gastos','select=*'); } catch { gastos = JSON.parse(localStorage.getItem('jd_gastos')||'[]'); }
+    S = {clients,events,tasks,payments,gastos};
+    populatePaymentFilters();
+    populateFinanceMonths();
     renderCurrent();
-  } catch (e) {
-    console.error(e);
-    document.querySelector('.content').innerHTML = `<div class="loading" style="color:var(--red)">Error conectando con Supabase. Revisa que las tablas estén creadas.<br><small style="color:var(--muted)">${e.message}</small></div>`;
+  } catch(e) {
+    document.querySelector('.content').innerHTML = `<div class="empty" style="color:var(--red)">Error Supabase: ${e.message}<br><small style="color:var(--muted)">Comprueba que las tablas están creadas y las policies habilitadas.</small></div>`;
   }
 }
 
-// ─── NAVIGATION ───────────────────────────────────────────────
+// ── NAVIGATION ────────────────────────────────────────────────
 let currentView = 'dashboard';
-
-const primaryActions = {
-  dashboard: () => openClientModal(),
-  clients: () => openClientModal(),
-  timeline: () => openEventModal(),
-  tasks: () => openTaskModal(),
-  payments: () => openPaymentModal()
-};
-
-const primaryLabels = {
-  dashboard: '+ Nuevo cliente',
-  clients: '+ Nuevo cliente',
-  timeline: '+ Evento',
-  tasks: '+ Nueva tarea',
-  payments: '+ Pago'
-};
-
-function primaryAction() { primaryActions[currentView]?.(); }
+const pLabels = {dashboard:'+ Nuevo cliente',clients:'+ Nuevo cliente',timeline:'+ Evento',tasks:'+ Nueva tarea',payments:'+ Pago',finance:'+ Gasto'};
+const pActions = {dashboard:openClientModal,clients:openClientModal,timeline:openEventModal,tasks:openTaskModal,payments:openPaymentModal,finance:openGastoModal};
+function primaryAction(){pActions[currentView]?.();}
 
 function showView(name) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.querySelectorAll('.ni').forEach(n => n.classList.remove('active'));
-  document.getElementById('view-' + name).classList.add('active');
-  document.querySelectorAll('.ni').forEach(n => {
-    const labels = { dashboard: 'dashboard', clients: 'clientes', timeline: 'timeline', tasks: 'tareas', payments: 'pagos' };
-    if (n.textContent.toLowerCase().includes(labels[name])) n.classList.add('active');
-  });
-  const titles = { dashboard: 'Dashboard', clients: 'Clientes', timeline: 'Timeline', tasks: 'Tareas delegadas', payments: 'Pagos' };
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  const labels = {dashboard:'dashboard',clients:'clientes',timeline:'timeline',tasks:'tareas',payments:'pagos',finance:'finanzas'};
+  document.querySelectorAll('.ni').forEach(n=>{ if(n.textContent.toLowerCase().includes(labels[name])) n.classList.add('active'); });
+  const titles = {dashboard:'Dashboard',clients:'Clientes',timeline:'Timeline',tasks:'Tareas delegadas',payments:'Pagos',finance:'Finanzas'};
   document.getElementById('page-title').textContent = titles[name];
-  document.getElementById('btn-primary').textContent = primaryLabels[name];
+  document.getElementById('btn-primary').textContent = pLabels[name];
   currentView = name;
   renderCurrent();
 }
 
 function renderCurrent() {
-  const renders = { dashboard: renderDashboard, clients: renderClients, timeline: renderGantt, tasks: renderTasks, payments: renderPayments };
-  renders[currentView]?.();
+  const r = {dashboard:renderDashboard,clients:renderClients,timeline:renderGantt,tasks:renderTasks,payments:renderPayments,finance:renderFinance};
+  r[currentView]?.();
 }
 
-// ─── DASHBOARD ───────────────────────────────────────────────
+// ── DASHBOARD ─────────────────────────────────────────────────
 function renderDashboard() {
-  const { clients, events, tasks, payments } = state;
-  const active = clients.filter(c => c.estado === 'Activo');
-  const mrr = active.reduce((s, c) => s + (c.retainer || 0), 0);
-  const pendingTasks = tasks.filter(t => t.estado !== 'Completado').length;
-  const latePayments = payments.filter(p => p.estado === 'Atrasado').length;
-
+  const {clients,events,tasks,payments} = S;
+  const active = clients.filter(c=>c.estado==='Activo');
+  const mrr = active.reduce((s,c)=>s+(c.retainer||0),0);
+  const pending = tasks.filter(t=>t.estado!=='Completado').length;
+  const late = payments.filter(p=>p.estado==='Atrasado').length;
   document.getElementById('stats').innerHTML = `
-    <div class="stat"><div class="stat-label">Clientes activos</div><div class="stat-val c-accent">${active.length}</div><div class="stat-sub">${clients.length} total</div></div>
-    <div class="stat"><div class="stat-label">MRR</div><div class="stat-val c-blue">${fmtEur(mrr)}</div><div class="stat-sub">retainers activos</div></div>
-    <div class="stat"><div class="stat-label">Tareas pendientes</div><div class="stat-val c-orange">${pendingTasks}</div><div class="stat-sub">de ${tasks.length} total</div></div>
-    <div class="stat"><div class="stat-label">Pagos atrasados</div><div class="stat-val c-red">${latePayments}</div><div class="stat-sub">requieren atención</div></div>
+    <div class="stat"><div class="slabel">Clientes activos</div><div class="sval ca">${active.length}</div><div class="ssub">${clients.length} total</div></div>
+    <div class="stat"><div class="slabel">MRR base</div><div class="sval cb">${fE(mrr)}</div><div class="ssub">sin impuestos</div></div>
+    <div class="stat"><div class="slabel">Tareas pendientes</div><div class="sval co">${pending}</div><div class="ssub">de ${tasks.length} total</div></div>
+    <div class="stat"><div class="slabel">Pagos atrasados</div><div class="sval cr">${late}</div><div class="ssub">requieren atención</div></div>
   `;
-
-  const now = new Date();
-  const in30 = new Date(); in30.setDate(in30.getDate() + 30);
-  const upcoming = events
-    .filter(e => { const d = new Date(e.fecha + 'T00:00:00'); return d >= now && d <= in30; })
-    .sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
-    .slice(0, 5);
-
-  document.getElementById('upcoming-events').innerHTML = upcoming.length ? upcoming.map(e => {
-    const d = new Date(e.fecha + 'T00:00:00');
+  const now = new Date(), in30 = new Date(); in30.setDate(in30.getDate()+30);
+  const upcoming = events.filter(e=>{const d=new Date(e.fecha+'T00:00:00');return d>=now&&d<=in30;}).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha)).slice(0,5);
+  document.getElementById('upcoming-events').innerHTML = upcoming.length ? upcoming.map(e=>{
+    const d=new Date(e.fecha+'T00:00:00');
     return `<div style="display:flex;gap:12px;align-items:center;padding:10px 12px;background:var(--s1);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px">
       <div style="width:40px;height:40px;background:var(--s2);border:1px solid var(--border);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
         <span style="font-family:var(--fh);font-weight:700;font-size:15px;line-height:1">${d.getDate()}</span>
         <span style="font-size:8px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">${d.toLocaleDateString('es-ES',{month:'short'})}</span>
       </div>
-      <div>
-        <div style="font-size:12px;font-weight:500">${e.titulo}</div>
-        <div style="font-size:10px;color:var(--muted)">${e.cliente_nombre} · ${e.tipo}</div>
-      </div>
+      <div><div style="font-size:12px;font-weight:500">${e.titulo}</div><div style="font-size:10px;color:var(--muted)">${e.cliente_nombre} · ${e.tipo}</div></div>
     </div>`;
   }).join('') : '<div class="empty">Sin eventos próximos</div>';
 
-  let alertsHtml = '';
-  payments.filter(p => p.estado === 'Atrasado').forEach(p => {
-    alertsHtml += `<div class="alert alert-red">⚠ Pago atrasado: ${p.cliente_nombre} — ${fmtEur(p.importe)}</div>`;
-  });
-  tasks.filter(t => t.estado !== 'Completado' && isOverdue(t.fecha_limite)).forEach(t => {
-    alertsHtml += `<div class="alert alert-yellow">◎ Tarea vencida: "${t.titulo}" → ${t.persona}</div>`;
-  });
-  document.getElementById('alerts').innerHTML = alertsHtml || '<div style="color:var(--muted);font-size:12px;padding:10px 0">Sin alertas ✓</div>';
+  let aHtml = '';
+  payments.filter(p=>p.estado==='Atrasado').forEach(p=>{ aHtml+=`<div class="alert alert-r">⚠ Pago atrasado: ${p.cliente_nombre} — ${fE(p.importe)}</div>`; });
+  tasks.filter(t=>t.estado!=='Completado'&&isOD(t.fecha_limite)).forEach(t=>{ aHtml+=`<div class="alert alert-y">◎ Tarea vencida: "${t.titulo}" → ${t.persona}</div>`; });
+  document.getElementById('alerts').innerHTML = aHtml || '<div style="color:var(--muted);font-size:12px;padding:10px 0">Sin alertas ✓</div>';
 
-  const rows = active.map(c => {
-    const nextEv = events.filter(e => e.cliente_id === c.id && !isOverdue(e.fecha)).sort((a, b) => new Date(a.fecha) - new Date(b.fecha))[0];
-    const total = tasks.filter(t => t.cliente_id === c.id).length;
-    const done = tasks.filter(t => t.cliente_id === c.id && t.estado === 'Completado').length;
-    const pct = total ? Math.round((done / total) * 100) : 0;
+  const rows = active.map(c=>{
+    const nextEv = events.filter(e=>e.cliente_id===c.id&&!isOD(e.fecha)).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha))[0];
     return `<tr onclick="openDetail('${c.id}')">
-      <td><div class="cname">${c.nombre}</div><div class="csub">${c.contacto || ''}</div></td>
+      <td><div class="cname">${c.nombre}</div><div class="csub">${c.contacto||''}</div></td>
+      <td>${eBadge(c.entidad)}</td>
       <td>${c.servicio}</td>
-      <td>${statusBadge(c.estado)}</td>
-      <td>${fmtEur(c.retainer)}/mes</td>
-      <td style="font-size:11px;color:var(--muted2)">${nextEv ? `${fmtDate(nextEv.fecha)}<br><span style="color:var(--blue)">${nextEv.titulo}</span>` : '—'}</td>
-      <td><div style="display:flex;align-items:center;gap:7px"><div class="pw"><div class="pb" style="width:${pct}%"></div></div><span style="font-size:10px;color:var(--muted)">${pct}%</span></div></td>
+      <td>${sBadge(c.estado)}</td>
+      <td>${fE(c.retainer)}/mes</td>
+      <td style="font-size:11px;color:var(--muted2)">${nextEv?`${fD(nextEv.fecha)}<br><span style="color:var(--blue)">${nextEv.titulo}`:'—'}</td>
     </tr>`;
   }).join('');
   document.getElementById('dash-table').innerHTML = rows || '<tr><td colspan="6" class="empty">Sin clientes activos</td></tr>';
 }
 
-// ─── CLIENTS ────────────────────────────────────────────────
-function renderClients(filter = '') {
-  let list = state.clients;
-  if (filter) list = list.filter(c => c.nombre.toLowerCase().includes(filter.toLowerCase()));
-
-  const rows = list.map(c => {
-    const paid = state.payments.filter(p => p.cliente_id === c.id && p.estado === 'Pagado').reduce((s, p) => s + (p.importe || 0), 0);
+// ── CLIENTS ───────────────────────────────────────────────────
+function renderClients(filter='') {
+  let list = S.clients;
+  if(filter) list = list.filter(c=>c.nombre.toLowerCase().includes(filter.toLowerCase()));
+  const rows = list.map(c=>{
+    const paid = S.payments.filter(p=>p.cliente_id===c.id&&p.estado==='Pagado').reduce((s,p)=>s+(p.importe||0),0);
     return `<tr onclick="openDetail('${c.id}')">
-      <td><div class="cname">${c.nombre}</div><div class="csub">desde ${fmtDate(c.fecha_inicio)}</div></td>
+      <td><div class="cname">${c.nombre}</div><div class="csub">desde ${fD(c.fecha_inicio)}</div></td>
+      <td>${eBadge(c.entidad)}</td>
       <td>${c.servicio}</td>
       <td>${c.responsable}</td>
-      <td>${statusBadge(c.estado)}</td>
-      <td>${fmtEur(c.retainer)}/mes</td>
-      <td><span class="c-green">${fmtEur(paid)}</span></td>
-      <td style="display:flex;gap:6px"><button class="btn btn-sm" onclick="event.stopPropagation();editClient('${c.id}')">Editar</button><button class="btn btn-sm btn-danger" onclick="event.stopPropagation();deleteClient('${c.id}','${c.nombre.replace(/'/g,"\\'")}')">Eliminar</button></td>
+      <td>${sBadge(c.estado)}</td>
+      <td>${fE(c.retainer)}/mes</td>
+      <td><span class="cg">${fE(paid)}</span></td>
+      <td style="display:flex;gap:6px">
+        <button class="btn btn-sm" onclick="event.stopPropagation();editClient('${c.id}')">Editar</button>
+        <button class="btn btn-sm btn-del" onclick="event.stopPropagation();deleteClient('${c.id}','${c.nombre.replace(/'/g,"\\'")}')">Eliminar</button>
+      </td>
     </tr>`;
   }).join('');
-  document.getElementById('clients-table').innerHTML = rows || '<tr><td colspan="7" class="empty">Sin clientes. Crea el primero →</td></tr>';
+  document.getElementById('clients-table').innerHTML = rows || '<tr><td colspan="8" class="empty">Sin clientes</td></tr>';
 }
 
-// ─── GANTT TIMELINE ─────────────────────────────────────────
+// ── GANTT ─────────────────────────────────────────────────────
 function renderGantt() {
-  const { clients, events } = state;
-  const baseDate = new Date();
-  baseDate.setDate(1);
-  baseDate.setMonth(baseDate.getMonth() + ganttOffset);
-
-  const months = [];
-  for (let i = 0; i < 6; i++) {
-    const d = new Date(baseDate);
-    d.setMonth(d.getMonth() + i);
-    months.push(d);
-  }
-
-  const rangeStart = months[0];
-  const rangeEnd = new Date(months[5]);
-  rangeEnd.setMonth(rangeEnd.getMonth() + 1);
-  rangeEnd.setDate(0);
-
-  document.getElementById('gantt-range').textContent =
-    `${rangeStart.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })} — ${rangeEnd.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })}`;
-
-  const totalMs = rangeEnd - rangeStart;
-
-  function pct(date) {
-    const d = new Date(date);
-    if (d < rangeStart) return 0;
-    if (d > rangeEnd) return 100;
-    return ((d - rangeStart) / totalMs) * 100;
-  }
-
-  // Today line
-  const todayPct = pct(new Date());
-  const showToday = todayPct >= 0 && todayPct <= 100;
-
-  let html = `<div class="gantt-inner">
-    <div class="gantt-header">
-      <div class="gantt-label-col">Cliente</div>
-      <div class="gantt-months">
-        ${months.map(m => `<div class="gantt-month">${m.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' })}</div>`).join('')}
-      </div>
-    </div>`;
-
-  if (!clients.length) {
-    html += `<div class="empty">Sin clientes. Crea uno primero.</div>`;
-  } else {
-    clients.forEach(c => {
-      const startDate = c.fecha_inicio ? new Date(c.fecha_inicio + 'T00:00:00') : rangeStart;
-      const endDate = c.estado === 'Finalizado' ? (c.fecha_fin ? new Date(c.fecha_fin + 'T00:00:00') : rangeEnd) : rangeEnd;
-
-      const barStart = Math.max(0, pct(startDate));
-      const barEnd = Math.min(100, pct(endDate));
-      const barWidth = Math.max(0, barEnd - barStart);
-
-      const barClass = { 'Activo': 'gbar-active', 'Onboarding': 'gbar-onboarding', 'Pausado': 'gbar-paused', 'Finalizado': 'gbar-ended' }[c.estado] || 'gbar-active';
-
-      // Events for this client in range
-      const clientEvents = events.filter(e => {
-        if (e.cliente_id !== c.id) return false;
-        const d = new Date(e.fecha + 'T00:00:00');
-        return d >= rangeStart && d <= rangeEnd;
-      });
-
-      const dots = clientEvents.map(e => {
-        const ep = pct(new Date(e.fecha + 'T00:00:00'));
-        const color = eventDotColor(e.tipo);
-        return `<div class="gantt-event-dot" style="left:calc(${ep}% - 4px);background:${color};border:1.5px solid var(--bg)" title="${e.titulo} — ${fmtDate(e.fecha)}"></div>`;
-      }).join('');
-
-      const todayLine = showToday ? `<div class="gantt-today" style="left:${todayPct}%"><div class="gantt-today-label" style="left:${todayPct}%">hoy</div></div>` : '';
-
-      html += `<div class="gantt-row">
-        <div class="gantt-client">
-          <div class="gc-name">${c.nombre}</div>
-          <div class="gc-sub">${c.servicio}</div>
-        </div>
-        <div class="gantt-track">
-          ${todayLine}
-          ${barWidth > 0 ? `<div class="gantt-bar ${barClass}" style="left:${barStart}%;width:${barWidth}%">${c.nombre}</div>` : ''}
-          ${dots}
-        </div>
-      </div>`;
-    });
-  }
-
-  html += '</div>';
+  const {clients,events} = S;
+  const base = new Date(); base.setDate(1); base.setMonth(base.getMonth()+ganttOffset);
+  const months = Array.from({length:6},(_,i)=>{ const d=new Date(base); d.setMonth(d.getMonth()+i); return d; });
+  const rStart = months[0];
+  const rEnd = new Date(months[5]); rEnd.setMonth(rEnd.getMonth()+1); rEnd.setDate(0);
+  const totalMs = rEnd - rStart;
+  const pct = d => { const dd=new Date(d); if(dd<rStart)return 0; if(dd>rEnd)return 100; return ((dd-rStart)/totalMs)*100; };
+  const todayP = pct(new Date()); const showT = todayP>=0&&todayP<=100;
+  document.getElementById('gantt-range').textContent = `${rStart.toLocaleDateString('es-ES',{month:'short',year:'numeric'})} — ${rEnd.toLocaleDateString('es-ES',{month:'short',year:'numeric'})}`;
+  let html = `<div class="gi"><div class="gh"><div class="glc">Cliente</div><div class="gms">${months.map(m=>`<div class="gm">${m.toLocaleDateString('es-ES',{month:'short',year:'2-digit'})}</div>`).join('')}</div></div>`;
+  if(!clients.length){ html+='<div class="empty">Sin clientes</div>'; }
+  else clients.forEach(c=>{
+    const sd = c.fecha_inicio?new Date(c.fecha_inicio+'T00:00:00'):rStart;
+    const ed = c.estado==='Finalizado'&&c.fecha_fin?new Date(c.fecha_fin+'T00:00:00'):rEnd;
+    const bs = Math.max(0,pct(sd)), be = Math.min(100,pct(ed));
+    const bw = Math.max(0,be-bs);
+    const bc = {'Activo':'gb-a','Onboarding':'gb-o','Pausado':'gb-p','Finalizado':'gb-f'}[c.estado]||'gb-a';
+    const dots = events.filter(e=>{ if(e.cliente_id!==c.id)return false; const d=new Date(e.fecha+'T00:00:00'); return d>=rStart&&d<=rEnd; })
+      .map(e=>`<div class="gdot" style="left:calc(${pct(new Date(e.fecha+'T00:00:00'))}% - 4px);background:${dotColor(e.tipo)};border:1.5px solid var(--bg)" title="${e.titulo} — ${fD(e.fecha)}"></div>`).join('');
+    const tline = showT?`<div class="gtoday" style="left:${todayP}%"></div>`:'';
+    html+=`<div class="grow"><div class="gcl"><div class="gcn">${c.nombre}</div><div class="gcs">${c.servicio}</div></div><div class="gtrack">${tline}${bw>0?`<div class="gbar ${bc}" style="left:${bs}%;width:${bw}%">${c.nombre}</div>`:''}${dots}</div></div>`;
+  });
+  html+='</div>';
   document.getElementById('gantt-wrap').innerHTML = html;
 }
+function ganttPrev(){ganttOffset-=3;renderGantt();}
+function ganttNext(){ganttOffset+=3;renderGantt();}
 
-function ganttPrev() { ganttOffset -= 3; renderGantt(); }
-function ganttNext() { ganttOffset += 3; renderGantt(); }
-
-// ─── TASKS KANBAN ────────────────────────────────────────────
+// ── TASKS ─────────────────────────────────────────────────────
 function renderTasks() {
-  const { tasks } = state;
-  const people = [...new Set(tasks.map(t => t.persona))].filter(Boolean);
-
-  if (!people.length) {
-    document.getElementById('kanban').innerHTML = '<div class="empty" style="grid-column:1/-1">Sin tareas delegadas</div>';
-    return;
-  }
-
-  document.getElementById('kanban').innerHTML = people.map(person => {
-    const personTasks = tasks.filter(t => t.persona === person);
-    const pending = personTasks.filter(t => t.estado !== 'Completado').length;
-
-    const cards = personTasks.map(t => `
+  const {tasks} = S;
+  const people = [...new Set(tasks.map(t=>t.persona))].filter(Boolean);
+  if(!people.length){ document.getElementById('kanban').innerHTML='<div class="empty" style="grid-column:1/-1">Sin tareas</div>'; return; }
+  document.getElementById('kanban').innerHTML = people.map(person=>{
+    const pt = tasks.filter(t=>t.persona===person);
+    const pend = pt.filter(t=>t.estado!=='Completado').length;
+    const totalCost = pt.reduce((s,t)=>s+(t.coste||0),0);
+    const cards = pt.map(t=>`
       <div class="kcard">
         <div style="display:flex;gap:8px;align-items:flex-start">
-          <span class="task-check ${t.estado === 'Completado' ? 'done' : ''}" onclick="toggleTask('${t.id}','${t.estado}')">${t.estado === 'Completado' ? '✓' : ''}</span>
+          <span class="tck ${t.estado==='Completado'?'done':''}" onclick="toggleTask('${t.id}','${t.estado}')">${t.estado==='Completado'?'✓':''}</span>
           <div style="flex:1">
-            <div class="kcard-title" style="${t.estado === 'Completado' ? 'text-decoration:line-through;color:var(--muted)' : ''}">${t.titulo}</div>
-            <div class="kcard-meta">${t.cliente_nombre || '—'} · ${fmtDate(t.fecha_limite)}</div>
-            ${isOverdue(t.fecha_limite) && t.estado !== 'Completado' ? '<div style="font-size:10px;color:var(--red);margin-top:2px">VENCIDA</div>' : ''}
-            <div class="kcard-foot">${priBadge(t.prioridad)} ${taskBadge(t.estado)}</div>
+            <div class="kct" style="${t.estado==='Completado'?'text-decoration:line-through;color:var(--muted)':''}">${t.titulo}</div>
+            <div class="kcm">${t.cliente_nombre||'—'} · ${fD(t.fecha_limite)}</div>
+            ${t.coste?`<div style="font-size:10px;color:var(--orange);margin-top:2px">Coste: ${fE(t.coste)}${t.nota_coste?' · '+t.nota_coste:''}</div>`:''}
+            ${isOD(t.fecha_limite)&&t.estado!=='Completado'?'<div style="font-size:10px;color:var(--red);margin-top:1px">VENCIDA</div>':''}
+            <div class="kcf">${priBadge(t.prioridad)} ${tBadge(t.estado)}</div>
           </div>
         </div>
+      </div>`).join('');
+    return `<div class="kb">
+      <div class="kbh">
+        <span class="kbht">→ ${person}</span>
+        <span class="kbc">${pend} pend. · ${fE(totalCost)}</span>
       </div>
-    `).join('');
-
-    return `<div class="kboard">
-      <div class="khead"><span class="khead-title">→ ${person}</span><span class="kcount">${pending} pendiente${pending !== 1 ? 's' : ''}</span></div>
-      <div class="kbody">${cards || '<div style="color:var(--muted);font-size:11px;text-align:center;padding:10px">Sin tareas</div>'}</div>
+      <div class="kbody">${cards||'<div style="color:var(--muted);font-size:11px;text-align:center;padding:10px">Sin tareas</div>'}</div>
     </div>`;
   }).join('');
 }
 
-async function toggleTask(id, currentStatus) {
-  const newStatus = currentStatus === 'Completado' ? 'Pendiente' : 'Completado';
-  try {
-    await sb.patch('tareas', id, { estado: newStatus });
-    const task = state.tasks.find(t => t.id === id);
-    if (task) task.estado = newStatus;
-    renderTasks();
-  } catch (e) { console.error(e); }
+async function toggleTask(id,cur) {
+  const ns = cur==='Completado'?'Pendiente':'Completado';
+  try { await sb.patch('tareas',id,{estado:ns}); const t=S.tasks.find(t=>t.id===id); if(t)t.estado=ns; renderTasks(); } catch(e){console.error(e);}
 }
 
-// ─── PAYMENTS ────────────────────────────────────────────────
+// ── PAYMENTS ──────────────────────────────────────────────────
+function populatePaymentFilters() {
+  const months = [...new Set(S.payments.map(p=>p.fecha?p.fecha.slice(0,7):null).filter(Boolean))].sort().reverse();
+  const mSel = document.getElementById('pay-filter-month');
+  const cur = mSel.value;
+  mSel.innerHTML = '<option value="">Todos los meses</option>' + months.map(m=>`<option value="${m}">${monthLabel(m)}</option>`).join('');
+  if(cur) mSel.value = cur;
+
+  const cSel = document.getElementById('pay-filter-client');
+  const cc = cSel.value;
+  cSel.innerHTML = '<option value="">Todos los clientes</option>' + S.clients.map(c=>`<option value="${c.id}">${c.nombre}</option>`).join('');
+  if(cc) cSel.value = cc;
+}
+
 function renderPayments() {
-  const { payments } = state;
-  const totalPaid = payments.filter(p => p.estado === 'Pagado').reduce((s, p) => s + (p.importe || 0), 0);
-  const totalPending = payments.filter(p => p.estado === 'Pendiente').reduce((s, p) => s + (p.importe || 0), 0);
-  const totalLate = payments.filter(p => p.estado === 'Atrasado').reduce((s, p) => s + (p.importe || 0), 0);
-  const total = payments.reduce((s, p) => s + (p.importe || 0), 0);
+  let list = [...S.payments].sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
+  const fm = document.getElementById('pay-filter-month').value;
+  const fs = document.getElementById('pay-filter-status').value;
+  const fc = document.getElementById('pay-filter-client').value;
+  if(fm) list = list.filter(p=>p.fecha&&p.fecha.startsWith(fm));
+  if(fs) list = list.filter(p=>p.estado===fs);
+  if(fc) list = list.filter(p=>p.cliente_id===fc);
+
+  const totalB = list.reduce((s,p)=>s+(p.importe||0),0);
+  const totalIVA = list.reduce((s,p)=>s+(p.iva||0),0);
+  const totalFact = list.reduce((s,p)=>s+(p.total||p.importe||0),0);
+  const paid = list.filter(p=>p.estado==='Pagado').reduce((s,p)=>s+(p.total||p.importe||0),0);
+  const pend = list.filter(p=>p.estado==='Pendiente'||p.estado==='A la espera').reduce((s,p)=>s+(p.total||p.importe||0),0);
+  const late = list.filter(p=>p.estado==='Atrasado').reduce((s,p)=>s+(p.total||p.importe||0),0);
 
   document.getElementById('pay-stats').innerHTML = `
-    <div class="stat"><div class="stat-label">Total facturado</div><div class="stat-val">${fmtEur(total)}</div></div>
-    <div class="stat"><div class="stat-label">Cobrado</div><div class="stat-val c-accent">${fmtEur(totalPaid)}</div></div>
-    <div class="stat"><div class="stat-label">Pendiente</div><div class="stat-val c-orange">${fmtEur(totalPending)}</div></div>
-    <div class="stat"><div class="stat-label">Atrasado</div><div class="stat-val c-red">${fmtEur(totalLate)}</div></div>
+    <div class="stat"><div class="slabel">Base</div><div class="sval">${fE(totalB)}</div></div>
+    <div class="stat"><div class="slabel">IVA (ES)</div><div class="sval cm">${fE(totalIVA)}</div></div>
+    <div class="stat"><div class="slabel">Total facturado</div><div class="sval cb">${fE(totalFact)}</div></div>
+    <div class="stat"><div class="slabel">Cobrado</div><div class="sval ca">${fE(paid)}</div></div>
   `;
 
-  const rows = [...payments].sort((a, b) => new Date(b.fecha) - new Date(a.fecha)).map(p => `
-    <tr>
-      <td>${fmtDate(p.fecha)}</td>
+  const rows = list.map(p=>{
+    const c = S.clients.find(x=>x.id===p.cliente_id);
+    return `<tr>
+      <td>${fD(p.fecha)}</td>
       <td>${p.cliente_nombre}</td>
+      <td>${eBadge(c?.entidad||'autonomo')}</td>
       <td>${p.concepto}</td>
-      <td><span style="font-family:var(--fh);font-weight:700">${fmtEur(p.importe)}</span></td>
-      <td>${payBadge(p.estado)}</td>
-      <td style="color:var(--muted);font-size:11px">${p.nota || '—'}</td>
-    </tr>
-  `).join('');
-  document.getElementById('pay-table').innerHTML = rows || '<tr><td colspan="6" class="empty">Sin pagos registrados</td></tr>';
+      <td>${fE(p.importe)}</td>
+      <td>${p.iva?fE(p.iva):'—'}</td>
+      <td><b>${fE(p.total||p.importe)}</b></td>
+      <td>${pBadge(p.estado)}</td>
+      <td style="color:var(--muted);font-size:11px">${p.nota||'—'}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('pay-table').innerHTML = rows || '<tr><td colspan="9" class="empty">Sin pagos</td></tr>';
 }
 
-// ─── CLIENT DETAIL ───────────────────────────────────────────
-function openDetail(id) {
-  const c = state.clients.find(x => x.id === id);
-  if (!c) return;
-  const cEvents = state.events.filter(e => e.cliente_id === id).sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
-  const cTasks = state.tasks.filter(t => t.cliente_id === id);
-  const cPay = state.payments.filter(p => p.cliente_id === id).sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
-  const totalPaid = cPay.filter(p => p.estado === 'Pagado').reduce((s, p) => s + (p.importe || 0), 0);
+// ── FINANCE P&L ───────────────────────────────────────────────
+function populateFinanceMonths() {
+  const months = [...new Set([
+    ...S.payments.map(p=>p.fecha?p.fecha.slice(0,7):null),
+    monthKey(new Date())
+  ].filter(Boolean))].sort().reverse();
+  const sel = document.getElementById('fin-month');
+  const cur = sel.value;
+  sel.innerHTML = months.map(m=>`<option value="${m}">${monthLabel(m)}</option>`).join('');
+  if(!sel.value && months.length) sel.value = months[0];
+  if(cur && months.includes(cur)) sel.value = cur;
+}
 
+function renderFinance() {
+  const month = document.getElementById('fin-month').value;
+  if(!month) return;
+
+  // INGRESOS del mes (pagos cobrados)
+  const cobrados = S.payments.filter(p=>p.estado==='Pagado'&&p.fecha&&p.fecha.startsWith(month));
+
+  const ingresosES = cobrados.filter(p=>{ const c=S.clients.find(x=>x.id===p.cliente_id); return !c||c.entidad!=='llc'; });
+  const ingresosLLC = cobrados.filter(p=>{ const c=S.clients.find(x=>x.id===p.cliente_id); return c&&c.entidad==='llc'; });
+
+  const baseES = ingresosES.reduce((s,p)=>s+(p.importe||0),0);
+  const baseLLC = ingresosLLC.reduce((s,p)=>s+(p.importe||0),0);
+  const baseTotal = baseES + baseLLC;
+
+  const ivaES = ingresosES.reduce((s,p)=>s+(p.iva||0),0);
+  const irpfES = baseES * IRPF;
+
+  // GASTOS FIJOS
+  const gastosFijos = getGastosFijos();
+  const totalFijos = gastosFijos.reduce((s,g)=>s+g.amount,0);
+
+  // GASTOS VARIABLES del mes (supabase o localStorage)
+  const gastosVar = S.gastos.filter(g=>g.mes===month&&g.tipo==='variable');
+  const totalVar = gastosVar.reduce((s,g)=>s+(g.importe||g.amount||0),0);
+
+  // COSTES DELEGACIÓN del mes (tareas con coste)
+  const tasksCost = S.tasks.filter(t=>{
+    if(!t.coste||!t.fecha_limite) return false;
+    return t.fecha_limite.startsWith(month);
+  }).reduce((s,t)=>s+(t.coste||0),0);
+
+  const totalGastos = totalFijos + totalVar + tasksCost;
+  const beneficioNeto = baseTotal - irpfES - totalGastos;
+
+  // P&L BOX
+  document.getElementById('pl-box').innerHTML = `
+    <div class="pl-title">P&L — ${monthLabel(month)}</div>
+
+    <div class="pl-row" style="color:var(--muted2);font-size:11px;margin-bottom:4px">INGRESOS</div>
+    <div class="pl-row"><span>Base España (autónomo)</span><span class="cg">${fE(baseES)}</span></div>
+    <div class="pl-row"><span>Base LLC / Internacional</span><span class="cg">${fE(baseLLC)}</span></div>
+    <div class="pl-row total"><span>Total base</span><span>${fE(baseTotal)}</span></div>
+
+    <hr class="pl-sep">
+    <div class="pl-row" style="color:var(--muted2);font-size:11px;margin-bottom:4px">IMPUESTOS</div>
+    <div class="pl-row sub"><span>IVA repercutido ES (21%)</span><span class="cm">${fE(ivaES)} <small style="font-size:10px">(a declarar)</small></span></div>
+    <div class="pl-row sub"><span>IRPF ES (${(IRPF*100).toFixed(0)}%)</span><span class="cr">- ${fE(irpfES)}</span></div>
+
+    <hr class="pl-sep">
+    <div class="pl-row" style="color:var(--muted2);font-size:11px;margin-bottom:4px">GASTOS</div>
+    <div class="pl-row sub"><span>Gastos fijos</span><span class="cr">- ${fE(totalFijos)}</span></div>
+    <div class="pl-row sub"><span>Gastos variables</span><span class="cr">- ${fE(totalVar)}</span></div>
+    <div class="pl-row sub"><span>Costes delegación</span><span class="cr">- ${fE(tasksCost)}</span></div>
+    <div class="pl-row total"><span>Total gastos</span><span class="cr">- ${fE(totalGastos)}</span></div>
+
+    <hr class="pl-sep">
+    <div class="pl-row net"><span>Beneficio neto</span><span>${fE(beneficioNeto)}</span></div>
+  `;
+
+  // GASTOS LIST
+  const allGastos = [
+    ...gastosFijos.map(g=>({...g,fijo:true})),
+    ...gastosVar.map(g=>({id:g.id,name:g.nombre||g.name,amount:g.importe||g.amount,fijo:false,tipo:'variable'})),
+    ...(tasksCost>0?[{id:'tasks',name:'Costes delegación (tareas)',amount:tasksCost,fijo:false,tipo:'delegacion'}]:[])
+  ];
+
+  document.getElementById('gastos-list').innerHTML = `
+    <div class="gastos-list">
+      ${allGastos.map(g=>`
+        <div class="gasto-item">
+          <div>
+            <div class="gasto-name">${g.name}</div>
+            <div class="gasto-fixed">${g.fijo?'Gasto fijo':g.tipo==='delegacion'?'Delegación':'Variable este mes'}</div>
+          </div>
+          <div style="text-align:right;display:flex;align-items:center;gap:10px">
+            <span class="gasto-amount cr">${fE(g.amount)}</span>
+            ${!g.fijo&&g.tipo!=='delegacion'?`<button class="btn btn-sm btn-del" onclick="deleteGasto('${g.id}')">✕</button>`:''}
+          </div>
+        </div>
+      `).join('')}
+      <div class="gasto-item" style="border:1px dashed var(--border2);cursor:pointer;justify-content:center;color:var(--muted2);font-size:12px" onclick="openGastoModal()">+ Añadir gasto variable</div>
+    </div>
+  `;
+}
+
+// ── CLIENT DETAIL ─────────────────────────────────────────────
+function openDetail(id) {
+  const c = S.clients.find(x=>x.id===id);
+  if(!c) return;
+  const cEv = S.events.filter(e=>e.cliente_id===id).sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
+  const cTk = S.tasks.filter(t=>t.cliente_id===id);
+  const cPy = S.payments.filter(p=>p.cliente_id===id).sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
+  const totalPaid = cPy.filter(p=>p.estado==='Pagado').reduce((s,p)=>s+(p.total||p.importe||0),0);
+  const tc = calcTax(c.retainer, c.entidad||'autonomo', c.iva_incluido||'no');
   document.getElementById('detail-name').textContent = c.nombre;
   document.getElementById('detail-body').innerHTML = `
-    <div class="detail-grid" style="margin-bottom:16px">
-      <div class="dcard">
-        <div class="dcard-title">Ficha cliente</div>
-        <div class="drow"><span class="dk">Servicio</span><span class="dv">${c.servicio}</span></div>
-        <div class="drow"><span class="dk">Estado</span><span class="dv">${statusBadge(c.estado)}</span></div>
-        <div class="drow"><span class="dk">Responsable</span><span class="dv">${c.responsable}</span></div>
-        <div class="drow"><span class="dk">Retainer</span><span class="dv c-accent">${fmtEur(c.retainer)}/mes</span></div>
-        <div class="drow"><span class="dk">Facturación</span><span class="dv">Día ${c.dia_facturacion || '—'}</span></div>
-        <div class="drow"><span class="dk">Inicio</span><span class="dv">${fmtDate(c.fecha_inicio)}</span></div>
-        <div class="drow"><span class="dk">Contacto</span><span class="dv">${c.contacto || '—'}</span></div>
-        <div class="drow"><span class="dk">Total cobrado</span><span class="dv c-green">${fmtEur(totalPaid)}</span></div>
+    <div class="dgrid" style="margin-bottom:16px">
+      <div class="dc">
+        <div class="dct">Ficha cliente</div>
+        <div class="dr"><span class="dk">Entidad</span><span class="dv">${eBadge(c.entidad||'autonomo')}</span></div>
+        <div class="dr"><span class="dk">Servicio</span><span class="dv">${c.servicio}</span></div>
+        <div class="dr"><span class="dk">Estado</span><span class="dv">${sBadge(c.estado)}</span></div>
+        <div class="dr"><span class="dk">Responsable</span><span class="dv">${c.responsable}</span></div>
+        <div class="dr"><span class="dk">Base/mes</span><span class="dv ca">${fE(c.retainer)}</span></div>
+        ${c.entidad!=='llc'?`<div class="dr"><span class="dk">+ IVA 21%</span><span class="dv cm">${fE(tc.iva)}</span></div><div class="dr"><span class="dk">Total factura</span><span class="dv cb">${fE(tc.total)}</span></div><div class="dr"><span class="dk">- IRPF 15%</span><span class="dv cr">-${fE(tc.irpf)}</span></div>`:''}
+        <div class="dr"><span class="dk">Facturación</span><span class="dv">Día ${c.dia_facturacion||'—'}</span></div>
+        <div class="dr"><span class="dk">Inicio</span><span class="dv">${fD(c.fecha_inicio)}</span></div>
+        <div class="dr"><span class="dk">Contacto</span><span class="dv">${c.contacto||'—'}</span></div>
+        <div class="dr"><span class="dk">Total cobrado</span><span class="dv cg">${fE(totalPaid)}</span></div>
       </div>
-      <div class="dcard">
-        <div class="dcard-title">Notas</div>
-        <div style="font-size:12px;line-height:1.75;color:var(--muted2)">${c.notas || 'Sin notas.'}</div>
+      <div class="dc"><div class="dct">Notas</div><div style="font-size:12px;line-height:1.75;color:var(--muted2)">${c.notas||'Sin notas.'}</div></div>
+    </div>
+    <div class="dgrid">
+      <div class="dc">
+        <div class="dct">Eventos (${cEv.length})</div>
+        ${cEv.slice(0,6).map(e=>`<div class="dr"><div><div style="font-size:12px;font-weight:500">${e.titulo}</div><div style="font-size:10px;color:var(--muted)">${fD(e.fecha)} · ${e.tipo}</div></div></div>`).join('')||'<div style="color:var(--muted);font-size:12px;padding:8px 0">Sin eventos</div>'}
+      </div>
+      <div class="dc">
+        <div class="dct">Tareas (${cTk.length})</div>
+        ${cTk.map(t=>`<div class="dr"><div><div style="font-size:12px">${t.titulo}</div><div style="font-size:10px;color:var(--muted)">${t.persona} · ${fD(t.fecha_limite)}${t.coste?` · <span style="color:var(--orange)">${fE(t.coste)}</span>`:''}</div></div>${tBadge(t.estado)}</div>`).join('')||'<div style="color:var(--muted);font-size:12px;padding:8px 0">Sin tareas</div>'}
       </div>
     </div>
-    <div class="detail-grid">
-      <div class="dcard">
-        <div class="dcard-title">Eventos (${cEvents.length})</div>
-        ${cEvents.slice(0, 6).map(e => `
-          <div class="drow">
-            <div><div style="font-size:12px;font-weight:500">${e.titulo}</div><div style="font-size:10px;color:var(--muted)">${fmtDate(e.fecha)} · ${e.tipo}</div></div>
-          </div>`).join('') || '<div style="color:var(--muted);font-size:12px;padding:8px 0">Sin eventos</div>'}
-      </div>
-      <div class="dcard">
-        <div class="dcard-title">Tareas (${cTasks.length})</div>
-        ${cTasks.map(t => `
-          <div class="drow">
-            <div><div style="font-size:12px">${t.titulo}</div><div style="font-size:10px;color:var(--muted)">${t.persona} · ${fmtDate(t.fecha_limite)}</div></div>
-            ${taskBadge(t.estado)}
-          </div>`).join('') || '<div style="color:var(--muted);font-size:12px;padding:8px 0">Sin tareas</div>'}
-      </div>
-    </div>
-    <div class="dcard" style="margin-top:16px">
-      <div class="dcard-title">Pagos (${cPay.length})</div>
-      ${cPay.length ? `<table style="width:100%;font-size:12px">
-        <thead><tr style="color:var(--muted);font-size:9px;letter-spacing:1px;text-transform:uppercase">
-          <th style="padding:5px 0;font-weight:400;text-align:left">Fecha</th>
-          <th style="padding:5px 0;font-weight:400;text-align:left">Concepto</th>
-          <th style="padding:5px 0;font-weight:400;text-align:right">Importe</th>
-          <th style="padding:5px 0;font-weight:400;text-align:right">Estado</th>
+    <div class="dc" style="margin-top:16px">
+      <div class="dct">Pagos (${cPy.length})</div>
+      ${cPy.length?`<table style="width:100%;font-size:12px">
+        <thead><tr style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:1px">
+          <th style="padding:5px 0;font-weight:400;text-align:left">Fecha</th><th style="padding:5px 0;font-weight:400">Concepto</th>
+          <th style="padding:5px 0;font-weight:400;text-align:right">Base</th><th style="padding:5px 0;font-weight:400;text-align:right">Total</th><th style="padding:5px 0;font-weight:400;text-align:right">Estado</th>
         </tr></thead>
-        <tbody>${cPay.map(p => `<tr style="border-top:1px solid var(--border)">
-          <td style="padding:7px 0">${fmtDate(p.fecha)}</td>
-          <td>${p.concepto}</td>
-          <td style="text-align:right;font-weight:500">${fmtEur(p.importe)}</td>
-          <td style="text-align:right">${payBadge(p.estado)}</td>
+        <tbody>${cPy.map(p=>`<tr style="border-top:1px solid var(--border)">
+          <td style="padding:7px 0">${fD(p.fecha)}</td><td>${p.concepto}</td>
+          <td style="text-align:right">${fE(p.importe)}</td><td style="text-align:right;font-weight:500">${fE(p.total||p.importe)}</td><td style="text-align:right">${pBadge(p.estado)}</td>
         </tr>`).join('')}</tbody>
-      </table>` : '<div style="color:var(--muted);font-size:12px;padding:8px 0">Sin pagos</div>'}
+      </table>`:'<div style="color:var(--muted);font-size:12px;padding:8px 0">Sin pagos</div>'}
     </div>
   `;
   openModal('modal-detail');
 }
 
-// ─── MODALS ──────────────────────────────────────────────────
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+// ── MODALS ────────────────────────────────────────────────────
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+function popClients(selId){const s=document.getElementById(selId);s.innerHTML=S.clients.map(c=>`<option value="${c.id}">${c.nombre}</option>`).join('');}
 
-function populateClientSelect(selectId) {
-  const el = document.getElementById(selectId);
-  el.innerHTML = state.clients.map(c => `<option value="${c.id}">${c.nombre}</option>`).join('');
+// Entity UI
+function updateEntityUI() {
+  const entity = document.getElementById('f-entity').value;
+  const ivaRow = document.getElementById('f-iva-row');
+  ivaRow.style.display = entity==='llc'?'none':'flex';
+  const base = parseFloat(document.getElementById('f-retainer').value)||0;
+  const ivaInc = document.getElementById('f-iva-included').value;
+  const prev = document.getElementById('f-preview');
+  if(!base){prev.innerHTML='';return;}
+  if(entity==='llc'){
+    prev.innerHTML=`<b>${fE(base)}/mes</b> — Sin IVA ni retención (LLC)`;
+  } else {
+    const t = calcTax(base,'autonomo',ivaInc);
+    prev.innerHTML=`Base: <b>${fE(t.base)}</b> · IVA 21%: ${fE(t.iva)} · <b>Total factura: ${fE(t.total)}</b> · IRPF 15%: -${fE(t.irpf)} · Neto tú: <b class="cg">${fE(t.neto)}</b>`;
+  }
 }
 
 function openClientModal() {
   editingClientId = null;
-  document.getElementById('client-modal-title').textContent = 'Nuevo cliente';
-  ['f-name','f-owner','f-contact','f-notes'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('f-retainer').value = '';
-  document.getElementById('f-billing').value = '';
-  document.getElementById('f-start').value = today();
+  document.getElementById('client-mtitle').textContent = 'Nuevo cliente';
+  ['f-name','f-owner','f-contact','f-notes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-retainer').value='';
+  document.getElementById('f-billing').value='';
+  document.getElementById('f-start').value=tod();
+  document.getElementById('f-entity').value='autonomo';
+  document.getElementById('f-iva-included').value='no';
+  document.getElementById('f-preview').innerHTML='';
+  document.getElementById('f-iva-row').style.display='flex';
   openModal('modal-client');
 }
 
 function editClient(id) {
-  const c = state.clients.find(x => x.id === id);
-  if (!c) return;
+  const c = S.clients.find(x=>x.id===id);
+  if(!c) return;
   editingClientId = id;
-  document.getElementById('client-modal-title').textContent = 'Editar cliente';
-  document.getElementById('f-name').value = c.nombre || '';
-  document.getElementById('f-owner').value = c.responsable || '';
-  document.getElementById('f-service').value = c.servicio || 'Gestión Meta Ads';
-  document.getElementById('f-status').value = c.estado || 'Activo';
-  document.getElementById('f-retainer').value = c.retainer || '';
-  document.getElementById('f-billing').value = c.dia_facturacion || '';
-  document.getElementById('f-start').value = c.fecha_inicio || '';
-  document.getElementById('f-contact').value = c.contacto || '';
-  document.getElementById('f-notes').value = c.notas || '';
+  document.getElementById('client-mtitle').textContent = 'Editar cliente';
+  document.getElementById('f-name').value=c.nombre||'';
+  document.getElementById('f-owner').value=c.responsable||'';
+  document.getElementById('f-service').value=c.servicio||'Gestión Meta Ads';
+  document.getElementById('f-status').value=c.estado||'Activo';
+  document.getElementById('f-retainer').value=c.retainer||'';
+  document.getElementById('f-billing').value=c.dia_facturacion||'';
+  document.getElementById('f-start').value=c.fecha_inicio||'';
+  document.getElementById('f-contact').value=c.contacto||'';
+  document.getElementById('f-notes').value=c.notas||'';
+  document.getElementById('f-entity').value=c.entidad||'autonomo';
+  document.getElementById('f-iva-included').value=c.iva_incluido||'no';
+  updateEntityUI();
   openModal('modal-client');
 }
 
-function openEventModal() {
-  populateClientSelect('ev-client');
-  document.getElementById('ev-title').value = '';
-  document.getElementById('ev-date').value = today();
-  document.getElementById('ev-desc').value = '';
-  openModal('modal-event');
-}
+function openEventModal(){popClients('ev-client');document.getElementById('ev-date').value=tod();['ev-title','ev-desc'].forEach(id=>document.getElementById(id).value='');openModal('modal-event');}
+function openTaskModal(){popClients('tk-client');document.getElementById('tk-due').value=tod();['tk-title','tk-person','tk-cost','tk-cost-note'].forEach(id=>document.getElementById(id).value='');openModal('modal-task');}
 
-function openTaskModal() {
-  populateClientSelect('tk-client');
-  document.getElementById('tk-title').value = '';
-  document.getElementById('tk-person').value = '';
-  document.getElementById('tk-due').value = today();
-  openModal('modal-task');
-}
-
-function openPaymentModal() {
-  populateClientSelect('py-client');
-  document.getElementById('py-amount').value = '';
-  document.getElementById('py-concept').value = '';
-  document.getElementById('py-date').value = today();
-  document.getElementById('py-note').value = '';
+function openPaymentModal(){
+  popClients('py-client');
+  document.getElementById('py-date').value=tod();
+  ['py-amount','py-concept','py-note'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('py-preview').innerHTML='';
   openModal('modal-payment');
 }
 
-// ─── SAVE ────────────────────────────────────────────────────
-async function saveClient() {
-  const nombre = document.getElementById('f-name').value.trim();
-  if (!nombre) { alert('Nombre requerido'); return; }
-  const data = {
-    nombre,
-    responsable: document.getElementById('f-owner').value,
-    servicio: document.getElementById('f-service').value,
-    estado: document.getElementById('f-status').value,
-    retainer: parseFloat(document.getElementById('f-retainer').value) || 0,
-    dia_facturacion: parseInt(document.getElementById('f-billing').value) || 1,
-    fecha_inicio: document.getElementById('f-start').value || null,
-    contacto: document.getElementById('f-contact').value,
-    notas: document.getElementById('f-notes').value,
-  };
-  try {
-    if (editingClientId) {
-      await sb.patch('clientes', editingClientId, data);
-      const idx = state.clients.findIndex(c => c.id === editingClientId);
-      if (idx >= 0) state.clients[idx] = { ...state.clients[idx], ...data };
-    } else {
-      const res = await sb.post('clientes', data);
-      if (res[0]) state.clients.unshift(res[0]);
-    }
-    closeModal('modal-client');
-    renderCurrent();
-  } catch (e) { alert('Error: ' + e.message); }
-}
-
-async function saveEvent() {
-  const titulo = document.getElementById('ev-title').value.trim();
-  if (!titulo) { alert('Título requerido'); return; }
-  const clientId = document.getElementById('ev-client').value;
-  const cliente = state.clients.find(c => c.id === clientId);
-  const data = {
-    titulo,
-    cliente_id: clientId,
-    cliente_nombre: cliente?.nombre || '',
-    tipo: document.getElementById('ev-type').value,
-    fecha: document.getElementById('ev-date').value || null,
-    descripcion: document.getElementById('ev-desc').value,
-  };
-  try {
-    const res = await sb.post('eventos', data);
-    if (res[0]) state.events.unshift(res[0]);
-    closeModal('modal-event');
-    renderCurrent();
-  } catch (e) { alert('Error: ' + e.message); }
-}
-
-async function saveTask() {
-  const titulo = document.getElementById('tk-title').value.trim();
-  if (!titulo) { alert('Descripción requerida'); return; }
-  const clientId = document.getElementById('tk-client').value;
-  const cliente = state.clients.find(c => c.id === clientId);
-  const data = {
-    titulo,
-    persona: document.getElementById('tk-person').value,
-    cliente_id: clientId,
-    cliente_nombre: cliente?.nombre || '',
-    fecha_limite: document.getElementById('tk-due').value || null,
-    prioridad: document.getElementById('tk-priority').value,
-    estado: document.getElementById('tk-status').value,
-  };
-  try {
-    const res = await sb.post('tareas', data);
-    if (res[0]) state.tasks.unshift(res[0]);
-    closeModal('modal-task');
-    renderCurrent();
-  } catch (e) { alert('Error: ' + e.message); }
-}
-
-async function savePayment() {
-  const importe = parseFloat(document.getElementById('py-amount').value);
-  if (!importe) { alert('Importe requerido'); return; }
+function updatePaymentPreview(){
   const clientId = document.getElementById('py-client').value;
-  const cliente = state.clients.find(c => c.id === clientId);
-  const data = {
-    cliente_id: clientId,
-    cliente_nombre: cliente?.nombre || '',
-    concepto: document.getElementById('py-concept').value,
-    importe,
-    fecha: document.getElementById('py-date').value || null,
-    estado: document.getElementById('py-status').value,
-    nota: document.getElementById('py-note').value,
-  };
-  try {
-    const res = await sb.post('pagos', data);
-    if (res[0]) state.payments.unshift(res[0]);
-    closeModal('modal-payment');
-    renderCurrent();
-  } catch (e) { alert('Error: ' + e.message); }
-}
-
-// ─── SEARCH ──────────────────────────────────────────────────
-function handleSearch() {
-  const q = document.getElementById('search-input').value;
-  if (currentView === 'clients') renderClients(q);
-}
-
-// ─── CLOSE ON OVERLAY CLICK ──────────────────────────────────
-document.querySelectorAll('.overlay').forEach(o => {
-  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
-});
-
-// ─── LOGIN / LOGOUT ──────────────────────────────────────────
-const PASSWORD = 'Liam08';
-
-function checkLogin() { return sessionStorage.getItem('jd_auth') === '1'; }
-
-function doLogin() {
-  const pwd = document.getElementById('login-pwd').value;
-  if (pwd === PASSWORD) {
-    sessionStorage.setItem('jd_auth', '1');
-    document.getElementById('login-screen').classList.remove('show');
-    document.getElementById('main-app').style.display = 'flex';
-    loadAll();
+  const c = S.clients.find(x=>x.id===clientId);
+  const base = parseFloat(document.getElementById('py-amount').value)||0;
+  const prev = document.getElementById('py-preview');
+  if(!base||!c){prev.innerHTML='';return;}
+  if(c.entidad==='llc'){
+    prev.innerHTML=`<b>${fE(base)}</b> total — Sin IVA (LLC)`;
   } else {
-    document.getElementById('login-err').textContent = 'Contraseña incorrecta';
-    document.getElementById('login-pwd').value = '';
-    document.getElementById('login-pwd').focus();
+    const t = calcTax(base,'autonomo','no');
+    prev.innerHTML=`Base ${fE(base)} + IVA 21% ${fE(t.iva)} = <b>Total factura: ${fE(t.total)}</b> · IRPF -${fE(t.irpf)} · Neto: <b class="cg">${fE(t.neto)}</b>`;
   }
 }
 
-function doLogout() {
-  sessionStorage.removeItem('jd_auth');
-  document.getElementById('main-app').style.display = 'none';
-  document.getElementById('login-screen').classList.add('show');
-  document.getElementById('login-pwd').value = '';
-  document.getElementById('login-err').textContent = '';
+function openGastoModal(){
+  ['gs-name','gs-amount'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('gs-month').value=monthKey(new Date());
+  openModal('modal-gasto');
 }
 
-// ─── DELETE CLIENT ────────────────────────────────────────────
-async function deleteClient(id, name) {
-  if (!confirm(`¿Eliminar "${name}"?\nSe borrarán también sus eventos, tareas y pagos.`)) return;
+// ── SAVE ──────────────────────────────────────────────────────
+async function saveClient() {
+  const nombre = document.getElementById('f-name').value.trim();
+  if(!nombre){alert('Nombre requerido');return;}
+  const data = {
+    nombre, responsable:document.getElementById('f-owner').value,
+    servicio:document.getElementById('f-service').value, estado:document.getElementById('f-status').value,
+    retainer:parseFloat(document.getElementById('f-retainer').value)||0,
+    dia_facturacion:parseInt(document.getElementById('f-billing').value)||1,
+    fecha_inicio:document.getElementById('f-start').value||null,
+    contacto:document.getElementById('f-contact').value, notas:document.getElementById('f-notes').value,
+    entidad:document.getElementById('f-entity').value,
+    iva_incluido:document.getElementById('f-iva-included').value,
+  };
+  try {
+    if(editingClientId){
+      await sb.patch('clientes',editingClientId,data);
+      const i=S.clients.findIndex(c=>c.id===editingClientId);
+      if(i>=0) S.clients[i]={...S.clients[i],...data};
+    } else {
+      const r=await sb.post('clientes',data); if(r[0]) S.clients.unshift(r[0]);
+    }
+    closeModal('modal-client'); renderCurrent();
+  } catch(e){alert('Error: '+e.message);}
+}
+
+async function saveEvent() {
+  const titulo=document.getElementById('ev-title').value.trim();
+  if(!titulo){alert('Título requerido');return;}
+  const clientId=document.getElementById('ev-client').value;
+  const cliente=S.clients.find(c=>c.id===clientId);
+  const data={titulo,cliente_id:clientId,cliente_nombre:cliente?.nombre||'',tipo:document.getElementById('ev-type').value,fecha:document.getElementById('ev-date').value||null,descripcion:document.getElementById('ev-desc').value};
+  try { const r=await sb.post('eventos',data); if(r[0]) S.events.unshift(r[0]); closeModal('modal-event'); renderCurrent(); }
+  catch(e){alert('Error: '+e.message);}
+}
+
+async function saveTask() {
+  const titulo=document.getElementById('tk-title').value.trim();
+  if(!titulo){alert('Descripción requerida');return;}
+  const clientId=document.getElementById('tk-client').value;
+  const cliente=S.clients.find(c=>c.id===clientId);
+  const data={titulo,persona:document.getElementById('tk-person').value,cliente_id:clientId,cliente_nombre:cliente?.nombre||'',fecha_limite:document.getElementById('tk-due').value||null,prioridad:document.getElementById('tk-priority').value,estado:document.getElementById('tk-status').value,coste:parseFloat(document.getElementById('tk-cost').value)||0,nota_coste:document.getElementById('tk-cost-note').value};
+  try { const r=await sb.post('tareas',data); if(r[0]) S.tasks.unshift(r[0]); closeModal('modal-task'); renderCurrent(); }
+  catch(e){alert('Error: '+e.message);}
+}
+
+async function savePayment() {
+  const importe=parseFloat(document.getElementById('py-amount').value);
+  if(!importe){alert('Importe requerido');return;}
+  const clientId=document.getElementById('py-client').value;
+  const c=S.clients.find(x=>x.id===clientId);
+  const t = calcTax(importe, c?.entidad||'autonomo', 'no');
+  const data={cliente_id:clientId,cliente_nombre:c?.nombre||'',concepto:document.getElementById('py-concept').value,importe:t.base,iva:t.iva,total:t.total,fecha:document.getElementById('py-date').value||null,estado:document.getElementById('py-status').value,nota:document.getElementById('py-note').value};
+  try { const r=await sb.post('pagos',data); if(r[0]) S.payments.unshift(r[0]); closeModal('modal-payment'); populatePaymentFilters(); populateFinanceMonths(); renderCurrent(); }
+  catch(e){alert('Error: '+e.message);}
+}
+
+async function saveGasto() {
+  const nombre=document.getElementById('gs-name').value.trim();
+  const importe=parseFloat(document.getElementById('gs-amount').value);
+  if(!nombre||!importe){alert('Nombre e importe requeridos');return;}
+  const mes=document.getElementById('gs-month').value;
+  const tipo=document.getElementById('gs-type').value;
+  const data={nombre,importe,mes,tipo};
+  try {
+    let saved;
+    try { const r=await sb.post('gastos',data); saved=r[0]||{...data,id:Date.now().toString()}; }
+    catch {
+      saved={...data,id:Date.now().toString()};
+      const existing=JSON.parse(localStorage.getItem('jd_gastos')||'[]');
+      existing.push(saved); localStorage.setItem('jd_gastos',JSON.stringify(existing));
+    }
+    S.gastos.unshift(saved);
+    closeModal('modal-gasto'); renderFinance();
+  } catch(e){alert('Error: '+e.message);}
+}
+
+async function deleteGasto(id) {
+  if(!confirm('¿Eliminar este gasto?'))return;
+  try {
+    try { await sb.del('gastos',id); } catch {}
+    S.gastos=S.gastos.filter(g=>g.id!==id);
+    const ls=JSON.parse(localStorage.getItem('jd_gastos')||'[]').filter(g=>g.id!==id);
+    localStorage.setItem('jd_gastos',JSON.stringify(ls));
+    renderFinance();
+  } catch(e){alert('Error: '+e.message);}
+}
+
+async function deleteClient(id,name) {
+  if(!confirm(`¿Eliminar "${name}"?\nSe borrarán también sus eventos, tareas y pagos.`))return;
   try {
     await Promise.all([
-      ...state.events.filter(e => e.cliente_id === id).map(e => sb.delete('eventos', e.id)),
-      ...state.tasks.filter(t => t.cliente_id === id).map(t => sb.delete('tareas', t.id)),
-      ...state.payments.filter(p => p.cliente_id === id).map(p => sb.delete('pagos', p.id)),
+      ...S.events.filter(e=>e.cliente_id===id).map(e=>sb.del('eventos',e.id)),
+      ...S.tasks.filter(t=>t.cliente_id===id).map(t=>sb.del('tareas',t.id)),
+      ...S.payments.filter(p=>p.cliente_id===id).map(p=>sb.del('pagos',p.id)),
     ]);
-    await sb.delete('clientes', id);
-    state.clients = state.clients.filter(c => c.id !== id);
-    state.events = state.events.filter(e => e.cliente_id !== id);
-    state.tasks = state.tasks.filter(t => t.cliente_id !== id);
-    state.payments = state.payments.filter(p => p.cliente_id !== id);
+    await sb.del('clientes',id);
+    S.clients=S.clients.filter(c=>c.id!==id);
+    S.events=S.events.filter(e=>e.cliente_id!==id);
+    S.tasks=S.tasks.filter(t=>t.cliente_id!==id);
+    S.payments=S.payments.filter(p=>p.cliente_id!==id);
     renderCurrent();
-  } catch(e) { alert('Error: ' + e.message); }
+  } catch(e){alert('Error: '+e.message);}
 }
 
-// ─── INIT ────────────────────────────────────────────────────
-if (checkLogin()) {
-  document.getElementById('login-screen').classList.remove('show');
-  document.getElementById('main-app').style.display = 'flex';
-  loadAll();
+// ── LOGIN ─────────────────────────────────────────────────────
+const PWD='Liam08';
+function checkLogin(){return sessionStorage.getItem('jd_auth')==='1';}
+function doLogin(){
+  const p=document.getElementById('lpwd').value;
+  if(p===PWD){sessionStorage.setItem('jd_auth','1');document.getElementById('login-screen').classList.remove('show');document.getElementById('main-app').style.display='flex';loadAll();}
+  else{document.getElementById('lerr').textContent='Contraseña incorrecta';document.getElementById('lpwd').value='';document.getElementById('lpwd').focus();}
 }
+function doLogout(){sessionStorage.removeItem('jd_auth');document.getElementById('main-app').style.display='none';document.getElementById('login-screen').classList.add('show');document.getElementById('lpwd').value='';document.getElementById('lerr').textContent='';}
+
+// ── SEARCH & MISC ─────────────────────────────────────────────
+function handleSearch(){const q=document.getElementById('search-input').value;if(currentView==='clients')renderClients(q);}
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
+document.getElementById('py-client').addEventListener('change',updatePaymentPreview);
+
+// ── INIT ──────────────────────────────────────────────────────
+if(checkLogin()){document.getElementById('login-screen').classList.remove('show');document.getElementById('main-app').style.display='flex';loadAll();}
 </script>
 </div>
 </body>
